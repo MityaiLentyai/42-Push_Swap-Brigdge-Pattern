@@ -28,10 +28,21 @@ typedef enum e_algorithm
 
 typedef struct list
 {
-	int				value;
+	int	value;
 	struct list	*next;
 	struct list	*prev;
 }	d_list;
+
+// I suppose it will be easier if we use struct with current state of stacks etc
+// this way we can pass it as one argument to functions; sth like belowe
+
+typedef struct s_push_swap_state
+{
+	d_list	*stack_a;
+	d_list	*stack_b;
+	t_algorithm	algorithm_type;
+	int	benchmark;
+}	t_push_swap_state;
 
 
 #endif

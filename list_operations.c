@@ -9,11 +9,11 @@
 // I would go with null-ended list, as it is easier to implement,
 // understand and not mess up pointers.
 
-td_list    *create_node(int value)
+d_list    *create_node(int value)
 {
-    td_list	*new_node;
+    d_list	*new_node;
 
-    new_node = malloc(sizeof(td_list));
+    new_node = malloc(sizeof(d_list));
     if (!new_node)
         return (NULL);
     new_node->value = value;
@@ -22,12 +22,12 @@ td_list    *create_node(int value)
     return (new_node);
 }
 
-int    idx_of_min(td_list *stack)
+int    idx_of_min(d_list *stack)
 {
     int min_value;
     int min_index;
     int current_index;
-    td_list *current_node;
+    d_list *current_node;
 
     if (!stack)
         return (-1);
