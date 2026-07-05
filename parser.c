@@ -8,6 +8,7 @@ void	parse_input(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		
+		input = split_words(argv[i]);	// white char as dilimeters
+		while (*input[j])
 	}
 }
