@@ -37,12 +37,12 @@ typedef struct list
 // I suppose it will be easier if we use struct with current state of stacks etc
 // this way we can pass it as one argument to functions; sth like belowe
 
-typedef struct state
+typedef struct s_state
 {
 	d_list	*stack_a;
 	d_list	*stack_b;
 	t_algorithm	algorithm;
-	int	benchmark;
+	t_benchmark	*benchmark;
 }	t_state;
 
 // to_print = 1 if we are supposed to print it; 0 otherwise
