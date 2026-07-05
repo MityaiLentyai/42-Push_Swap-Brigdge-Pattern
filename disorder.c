@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   disorder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dzzayats <dzzayats@student.42warsaw.p      +#+  +:+       +#+        */
+/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 15:05:13 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/05 15:44:00 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/05 21:43:43 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
 //function compute_disorder(stack a):
 //	mistakes = 0
@@ -24,7 +26,7 @@
 // a concrete idea of what type and how we are gonna store "STACK A" in
 
 
-double	compute_disorder(stack a)
+double	compute_disorder(d_list *a)
 {
 	unsigned int	mistakes;
 	unsigned int	total_pairs;
@@ -35,12 +37,12 @@ double	compute_disorder(stack a)
 	total_pairs = 0;
 	i = 0;
 	j = 1;
-	while (i++ < (sizeof(a.value)-1)) // Signature of a??? Need to discuss this
+	while (i++ < (sizeof(a->value)-1)) // Signature of a??? Need to discuss this
 	{
-		while (j++ < (sizeof(a.value) - 1)) // Signature of a???
+		while (j++ < (sizeof(a->value) - 1)) // Signature of a???
 		{
 			++total_pairs;
-			if (a.value[i] > a.value[j])
+			if (a->value[i] > a->value[j])
 				++mistakes;
 		}
 	}
