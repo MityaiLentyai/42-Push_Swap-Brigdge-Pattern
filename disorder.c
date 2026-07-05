@@ -6,25 +6,11 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 15:05:13 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/05 22:13:37 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/05 22:14:31 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-//function compute_disorder(stack a):
-//	mistakes = 0
-//	total_pairs = 0
-//	for i from 0 to size(a)-1:
-//		for j from i+1 to size(a)-1:
-//			total_pairs += 1
-//			if a[i] > a[j]:
-//				mistakes += 1
-//	return mistakes / total_pairs
-
-// This is a mockup of a disorder function. To finish it properly we need
-// a concrete idea of what type and how we are gonna store "STACK A" in
-
 
 double	compute_disorder(d_list *a)
 {
