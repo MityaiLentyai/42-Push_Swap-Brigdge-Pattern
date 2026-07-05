@@ -1,6 +1,7 @@
 #include "push_swap.h"
 
-void	parse_input(int argc, char **argv)
+// 0 means success, 1 means failure
+int	parse_input(int argc, char **argv, td_list **stack_a, td_list **stack_b)
 {
 	int	i;
 	char	**input;
@@ -8,8 +9,6 @@ void	parse_input(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		input = split_words(argv[i]);	// white char as dilimeters
-		while (*input[j])
+
 	}
 }
-// Try to check if everything works properly
