@@ -11,7 +11,7 @@ t_state	*create_state()
     state->stack_a = NULL;
     state->stack_b = NULL;
     state->algorithm = NOT_SET;
-    state->benchmark = creat_benchmark();
+    state->benchmark = create_benchmark();
     return (state);
 }
 
