@@ -1,14 +1,29 @@
 #include "push_swap.h"
 
-// 0 means success, 1 means failure
-int	parse_input(int argc, char **argv, d_list **stack_a, d_list **stack_b)
+size_t	check_flags(int argc, char **argv, t_state state)
 {
-	int	i;
-	char	**input;
+	if (ft_strcmp)
 
-	i = 1;
+}
+// 0 means success, 1 means failure
+int	parse_input(int argc, char **argv, t_state state)
+{
+	size_t	i;
+	char	*input;
+	t_list	stack_a;
+
+	i = check_flags(argc, argv, state);
+
 	while (i < argc)
 	{
+		input = argv[i];
+		if(!input)
+		{
+			//ERROR
+			return (1);
+		}
 
+
+		i++;
 	}
 }
