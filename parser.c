@@ -12,3 +12,4 @@ void	parse_input(int argc, char **argv)
 		while (*input[j])
 	}
 }
+// Try to check if everything works properly
