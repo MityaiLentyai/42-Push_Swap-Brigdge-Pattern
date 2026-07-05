@@ -6,11 +6,8 @@ int	main(int argc, char **argv)
 		return (0);
 	else
 	{
-		d_list	*stack_a;
-		d_list	*stack_b;
-		stack_a = NULL;
-		stack_b = NULL;
-		if (parse_input(argc, argv, stack_a, stack_b))
+		state = create_state();
+		if (parse_input(argc, argv, state))
 		{
 			// Handle error in parsing input
 		}
