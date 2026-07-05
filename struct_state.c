@@ -8,9 +8,11 @@ t_state	*create_state()
     state = malloc(sizeof(t_state));
     if (!state)
         return (NULL);
-    state->stack_a = stack_a;
-    state->stack_b = stack_b;
-    state->algorithm_type = algorithm_type;
-    state->benchmark = benchmark;
+    state->stack_a = NULL;
+    state->stack_b = NULL;
+    state->algorithm = NOT_SET;
+    state->benchmark = creat_benchmark();
     return (state);
 }
+
+// void delete_state(t_state state);

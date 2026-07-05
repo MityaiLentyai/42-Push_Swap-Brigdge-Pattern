@@ -5,6 +5,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include "libft/libft.h"
 
 // Enum to mark the algorithm type we are supposed to use.
 // We can use either enum or normal struck with int variable to mark the algorithm type.
@@ -40,9 +41,33 @@ typedef struct state
 {
 	d_list	*stack_a;
 	d_list	*stack_b;
-	t_algorithm	algorithm_type;
+	t_algorithm	algorithm;
 	int	benchmark;
 }	t_state;
+
+// to_print = 1 if we are supposed to print it; 0 otherwise
+// the rest is to follow how many of each operation we have already used
+typedef struct s_benchmark
+{
+	size_t	to_print;
+	size_t	sa;
+	size_t	sb;
+	size_t	ss;
+	size_t	pa;
+	size_t	pb;
+	size_t	ra;
+	size_t	rb;
+	size_t	rr;
+	size_t	rra;
+	size_t	rrb;
+	size_t	rrr;
+}	t_benchmark;
+
+int			parse_input(int argc, char **argv, t_state state);
+size_t		check_algorithm(char **argv, t_state state);
+t_state		*create_state();
+t_benchmark	*create_benchmark();
+
 
 
 #endif
