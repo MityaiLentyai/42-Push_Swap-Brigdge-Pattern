@@ -26,12 +26,12 @@ typedef enum e_algorithm
 // For now, i am starting to implement null-eneded double linked list,
 // but, in case, it will not take much to modify basic list operations to circular one.
 
-typedef struct sd_list
+typedef struct list
 {
 	int				value;
-	struct s_d_list	*next;
-	struct s_d_list	*prev;
-}	td_list;
+	struct list	*next;
+	struct list	*prev;
+}	d_list;
 
 
 #endif
