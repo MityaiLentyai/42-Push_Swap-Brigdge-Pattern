@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 15:05:13 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/05 21:43:43 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/05 22:13:37 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ double	compute_disorder(d_list *a)
 	total_pairs = 0;
 	i = 0;
 	j = 1;
-	while (i++ < (sizeof(a->value)-1)) // Signature of a??? Need to discuss this
+	while (i++ < (sizeof(a->value)-1)) 
 	{
-		while (j++ < (sizeof(a->value) - 1)) // Signature of a???
+		while (j++ < (sizeof(a->value) - 1))
 		{
 			++total_pairs;
 			if (a->value[i] > a->value[j])
