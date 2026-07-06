@@ -6,16 +6,22 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 11:53:44 by nsuszano          #+#    #+#             */
-/*   Updated: 2026/07/06 16:59:41 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/06 17:15:02 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_dlist *lst)
+t_dlist	*ft_lstlast(t_dlist *lst)
 {
+        t_dlist *temp;
+        
 	while (lst && lst->next)
+        {
+                temp = lst;
 		lst = lst->next;
+                lst->prev = temp;
+        }
 	return (lst);
 }
 

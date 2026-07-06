@@ -32,7 +32,6 @@ typedef struct list
 	int	value;
 	struct list	*next;
 	struct list	*prev;
-        struct list     *tail;
 }	t_dlist;
 
 
@@ -59,8 +58,10 @@ typedef struct s_benchmark
 
 typedef struct s_state
 {
-	t_dlist	*stack_a;
-	t_dlist	*stack_b;
+	t_dlist	*head_a;
+	t_dlist	*head_b;
+        t_dlist *tail_a;
+        t_dlist *tail_b;
 	t_algorithm	algorithm;
 	t_benchmark	*benchmark;
 }	t_state;

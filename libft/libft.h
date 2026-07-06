@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 17:57:41 by nsuszano          #+#    #+#             */
-/*   Updated: 2026/07/06 16:56:51 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/06 17:19:47 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ typedef struct list
 	int			value;
 	struct list	*next;
 	struct list	*prev;
-	struct list	*tail;
 }	t_dlist;
 
 int		ft_isalpha(int c);
