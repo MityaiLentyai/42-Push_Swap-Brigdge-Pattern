@@ -9,11 +9,11 @@
 // I would go with null-ended list, as it is easier to implement,
 // understand and not mess up pointers.
 
-d_list *create_node(int value)
+t_dlist *create_node(int value)
 {
-	d_list * new_node;
+	t_dlist * new_node;
 
-	new_node = malloc(sizeof(d_list));
+	new_node = malloc(sizeof(t_dlist));
 	if (!new_node)
 		return (NULL);
 	new_node->value = value;
@@ -22,9 +22,9 @@ d_list *create_node(int value)
 	return (new_node);
 }
 
-void	lst_add_back(d_list *stack, d_list *new)
+void	lst_add_back(t_dlist *stack, t_dlist *new)
 {
-        d_list *last;
+        t_dlist *last;
 
         if (!new)
                 return ;
@@ -40,7 +40,7 @@ void	lst_add_back(d_list *stack, d_list *new)
         new->prev = last;
         new->next = NULL;
 }
-void    lst_add_front(d_list **stack_ptr, d_list *new)
+void    lst_add_front(t_dlist **stack_ptr, t_dlist *new)
 {
         if (!new)
                 return ;
@@ -48,9 +48,9 @@ void    lst_add_front(d_list **stack_ptr, d_list *new)
         *stack_ptr = new;
         new->prev = NULL;
 }
-d_list   *lst_release_front(d_list **root_pointer)
+t_dlist   *lst_release_front(t_dlist **root_pointer)
 {
-        d_list  *temp;
+        t_dlist  *temp;
 
         if (!root_pointer || !*root_pointer)
                 return ;
@@ -60,18 +60,18 @@ d_list   *lst_release_front(d_list **root_pointer)
                 (*root_pointer)->prev = NULL;
         return (temp);
 }
-void    lst_move_node(d_list **from_stack_ptr, d_list **to_stack_ptr)
+void    lst_move_node(t_dlist **from_stack_ptr, t_dlist **to_stack_ptr)
 {
         lst_add_front(to_stack_ptr, lst_release_front(from_stack_ptr));
 }
 
-int	idx_of_min(d_list * stack)
+int	idx_of_min(t_dlist * stack)
 {
 	int	min_value;
 	int	min_index;
 	int	current_index;
 
-	d_list * current_node;
+	t_dlist * current_node;
 	if (!stack)
 		return (-1);
 	min_value = stack->value;

@@ -32,7 +32,8 @@ typedef struct list
 	int	value;
 	struct list	*next;
 	struct list	*prev;
-}	d_list;
+        struct list     *tail;
+}	t_dlist;
 
 
 // to_print = 1 if we are supposed to print it; 0 otherwise
@@ -58,19 +59,19 @@ typedef struct s_benchmark
 
 typedef struct s_state
 {
-	d_list	*stack_a;
-	d_list	*stack_b;
+	t_dlist	*stack_a;
+	t_dlist	*stack_b;
 	t_algorithm	algorithm;
 	t_benchmark	*benchmark;
 }	t_state;
 
 int			parse_input(int argc, char **argv, t_state *state);
 size_t		check_algorithm(char **argv, t_state *state);
-size_t		check_duplicates(d_list	*stack, int input_value);
+size_t		check_duplicates(t_dlist	*stack, int input_value);
 t_state		*create_state();
 t_benchmark	*create_benchmark();
-void		lst_add_back(d_list *stack, d_list *new);
-d_list 		*create_node(int value);
+void		lst_add_back(t_dlist *stack, t_dlist *new);
+t_dlist 		*create_node(int value);
 
 
 

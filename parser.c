@@ -2,7 +2,7 @@
 
 
 // 1 means duplicate found --> ERROR; 0 means everything fine
-size_t	check_duplicates(d_list	*stack, int input_value)
+size_t	check_duplicates(t_dlist	*stack, int input_value)
 {
 	while (stack)
 	{
@@ -46,7 +46,7 @@ int	parse_input(int argc, char **argv, t_state *state)
 {
 	int	i;
 	int	input_value;
-	d_list	*curr_node;
+	t_dlist	*curr_node;
 
 	i = 1;
 	if (check_algorithm(argv, state))

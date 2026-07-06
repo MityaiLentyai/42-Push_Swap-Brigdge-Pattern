@@ -6,13 +6,13 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 15:05:13 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/05 22:14:31 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/06 16:59:41 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-double	compute_disorder(d_list *a)
+double	compute_disorder(t_dlist *a)
 {
 	unsigned int	mistakes;
 	unsigned int	total_pairs;
