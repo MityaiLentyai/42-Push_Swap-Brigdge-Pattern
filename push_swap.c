@@ -7,8 +7,9 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	else
-
-		if (parse_input(argc, argv, state))
+	{
+		state = create_state();
+		if (!state || parse_input(argc, argv, state))
 		{
 			// Handle error in parsing input
 			return (1);

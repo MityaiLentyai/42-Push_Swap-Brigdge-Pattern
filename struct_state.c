@@ -3,7 +3,6 @@
 t_state	*create_state()
 {
     t_state	*state;
-    t_list  *stack_a;
 
     state = malloc(sizeof(t_state));
     if (!state)

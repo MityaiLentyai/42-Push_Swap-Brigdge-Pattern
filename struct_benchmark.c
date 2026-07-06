@@ -19,6 +19,7 @@ t_benchmark	*create_benchmark()
 	bench->rra = 0;
 	bench->rrb = 0;
 	bench->rrr = 0;
+	return (bench);
 }
 
 // void	delete_benchmark(t_benchmark bench);

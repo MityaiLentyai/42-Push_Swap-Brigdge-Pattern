@@ -5,7 +5,10 @@ CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 
-SRCS = push_swap.c paser.c
+SRCS = push_swap.c parser.c struct_state.c struct_benchmark.c \
+list_operations.c help_search_func.c simple.c medium.c \
+complex.c adaptive.c disorder.c output.c small_stack_case.c \
+test.c 
 
 OBJS = $(SRCS:.c=.o)
 

@@ -34,16 +34,6 @@ typedef struct list
 	struct list	*prev;
 }	d_list;
 
-// I suppose it will be easier if we use struct with current state of stacks etc
-// this way we can pass it as one argument to functions; sth like belowe
-
-typedef struct s_state
-{
-	d_list	*stack_a;
-	d_list	*stack_b;
-	t_algorithm	algorithm;
-	t_benchmark	*benchmark;
-}	t_state;
 
 // to_print = 1 if we are supposed to print it; 0 otherwise
 // the rest is to follow how many of each operation we have already used
@@ -63,10 +53,24 @@ typedef struct s_benchmark
 	size_t	rrr;
 }	t_benchmark;
 
-int			parse_input(int argc, char **argv, t_state state);
-size_t		check_algorithm(char **argv, t_state state);
+// I suppose it will be easier if we use struct with current state of stacks etc
+// this way we can pass it as one argument to functions; sth like belowe
+
+typedef struct s_state
+{
+	d_list	*stack_a;
+	d_list	*stack_b;
+	t_algorithm	algorithm;
+	t_benchmark	*benchmark;
+}	t_state;
+
+int			parse_input(int argc, char **argv, t_state *state);
+size_t		check_algorithm(char **argv, t_state *state);
+size_t		check_duplicates(d_list	*stack, int input_value);
 t_state		*create_state();
 t_benchmark	*create_benchmark();
+void		lst_add_back(d_list *stack, d_list *new);
+d_list 		*create_node(int value);
 
 
 
