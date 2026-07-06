@@ -9,7 +9,7 @@
 // I would go with null-ended list, as it is easier to implement,
 // understand and not mess up pointers.
 
-d_list * create_node(int value)
+d_list *create_node(int value)
 {
 	d_list * new_node;
 
