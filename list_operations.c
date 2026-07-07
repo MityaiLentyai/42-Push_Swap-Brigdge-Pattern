@@ -84,7 +84,24 @@ t_dlist	*lst_release_front(t_state *state, t_dlist **head, t_dlist **tail)
 }
 
 // release_back neeeded - same as above but for back 
+t_dlist	*lst_release_back(t_state *state, t_dlist **head, t_dlist **tail)
+{
+	t_dlist	*temp;
 
+        if (!head || !tail || !(*tail))
+                return (NULL);
+        if (*head == *tail)
+        {
+                temp = *tail;
+                *head = NULL;
+                *tail = NULL;
+                return (temp);
+        }
+        temp = *tail;
+        *tail = (*tail)->next;
+        (*tail)->next = NULL;
+        return (temp);
+}
 // swap_firsts needed - swaps 2 first elements in stacks.
 
 int	idx_of_min(t_dlist *stack)
