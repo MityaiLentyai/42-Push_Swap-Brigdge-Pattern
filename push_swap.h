@@ -71,7 +71,8 @@ size_t		check_algorithm(char **argv, t_state *state);
 size_t		check_duplicates(t_dlist	*stack, int input_value);
 t_state		*create_state();
 t_benchmark	*create_benchmark();
-void		lst_add_back(t_dlist *stack, t_dlist *new);
+void		lst_add_back(t_state *state, t_dlist *new, t_dlist **head, t_dlist **tail);
+void		lst_add_front(t_state *state, t_dlist *new, t_dlist **head, t_dlist **tail);
 t_dlist 		*create_node(int value);
 
 

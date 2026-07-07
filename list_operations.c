@@ -58,7 +58,7 @@ void	lst_add_front(t_state *state, t_dlist *to_add, t_dlist **head, t_dlist **ta
 	}
 	else
 	{
-		to_add->next = head;
+		to_add->next = *head;
 		to_add->prev = NULL;
 		*head = to_add;
 	}
@@ -72,9 +72,9 @@ t_dlist	*lst_release_front(t_state *state, t_dlist **head, t_dlist **tail)
                 return (NULL);
         if (*head == *tail)
         {
-                temp = head;
-                head = NULL;
-                tail = NULL;
+                temp = *head;
+                *head = NULL;
+                *tail = NULL;
                 return (temp);
         }
         temp = *head;

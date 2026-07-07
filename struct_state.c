@@ -7,10 +7,12 @@ t_state	*create_state()
     state = malloc(sizeof(t_state));
     if (!state)
         return (NULL);
-    state->stack_a = NULL;
-    state->stack_b = NULL;
+    state->head_a = NULL;
+    state->head_b = NULL;
     state->algorithm = NOT_SET;
     state->benchmark = create_benchmark();
+    state->tail_a = NULL;
+    state->tail_b = NULL;
     return (state);
 }
 
