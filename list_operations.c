@@ -33,12 +33,12 @@ void	lst_add_back(t_state *state, t_dlist *to_add, t_dlist **head, t_dlist **tai
                 lst_add_front(state, to_add, head, tail);
                 return  ;
         }
-        else 
+        else
         {
                 (*tail)->next = to_add;
                 to_add->prev= *tail;
                 to_add->next = NULL;
-                (*tail)->next = to_add;
+                *tail = to_add;
         }
 }
 
@@ -83,7 +83,7 @@ t_dlist	*lst_release_front(t_state *state, t_dlist **head, t_dlist **tail)
         return (temp);
 }
 
-// release_back neeeded - same as above but for back 
+// release_back neeeded - same as above but for back
 
 // swap_firsts needed - swaps 2 first elements in stacks.
 
