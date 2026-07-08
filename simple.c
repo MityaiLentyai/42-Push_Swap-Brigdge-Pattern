@@ -8,21 +8,25 @@ void	simple(t_state *state)
 {
 	int	stack_size;
 	int	min_idx;
-	int how_many_op;
 
-	stack_size = list_size(state->head_a);
+        while (state->stack_a->head)
+        {
+                printf("%d\n", state->stack_a->head->value);
+                state->stack_a->head = state->stack_a->head->next;
+        }
+        stack_size = list_size(state->stack_a->head);
 	while (stack_size > 2)
 	{
-		min_idx = idx_of_min(state->head_a);
+		min_idx = idx_of_min(state->stack_a->head);
 		if (min_idx > (stack_size - 1) / 2)
-			RRA(state, stack_size - min_idx);
+			rra(state, stack_size - min_idx);
 		else
-			RA(state, min_idx);
-		PA(state, 1);
+			ra(state, min_idx);
+		pa(state, 1);
 		stack_size--;
 	}
-	if (check_if_swap(state->head_a))
-		SA(state, 1);
-	stack_size = list_size(state->head_b);
-	PA(state, stack_size);
+	// if (check_if_swap(state->stack_a->head))
+	// 	sa(state, 1);
+	stack_size = list_size(state->stack_b->head);
+	pa(state, stack_size);
 }

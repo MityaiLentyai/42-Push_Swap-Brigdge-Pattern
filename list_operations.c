@@ -22,15 +22,13 @@ t_dlist	*create_node(int value)
 	return (new_node);
 }
 
-void	lst_add_back(t_state *state, t_dlist *to_add, t_dlist **head, t_dlist **tail)
+void	lst_add_back(t_dlist *to_add, t_dlist **head, t_dlist **tail)
 {
-	t_dlist	*last;
-
         if (!head || !tail || !to_add)
 		return ;
         if (!(*head))
         {
-                lst_add_front(state, to_add, head, tail);
+                lst_add_front(to_add, head, tail);
                 return  ;
         }
         else
@@ -42,9 +40,8 @@ void	lst_add_back(t_state *state, t_dlist *to_add, t_dlist **head, t_dlist **tai
         }
 }
 
-void	lst_add_front(t_state *state, t_dlist *to_add, t_dlist **head, t_dlist **tail)
+void	lst_add_front(t_dlist *to_add, t_dlist **head, t_dlist **tail)
 {
-	t_dlist	*tmp;
 
 	if (!head || !tail || !to_add)
 		return ;
@@ -64,7 +61,7 @@ void	lst_add_front(t_state *state, t_dlist *to_add, t_dlist **head, t_dlist **ta
 	}
 }
 
-t_dlist	*lst_release_front(t_state *state, t_dlist **head, t_dlist **tail)
+t_dlist	*lst_release_front(t_dlist **head, t_dlist **tail)
 {
 	t_dlist	*temp;
 
@@ -84,7 +81,7 @@ t_dlist	*lst_release_front(t_state *state, t_dlist **head, t_dlist **tail)
 }
 
 // release_back neeeded - same as above but for back
-t_dlist	*lst_release_back(t_state *state, t_dlist **head, t_dlist **tail)
+t_dlist	*lst_release_back(t_dlist **head, t_dlist **tail)
 {
 	t_dlist	*temp;
 

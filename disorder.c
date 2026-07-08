@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 15:05:13 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/08 01:36:17 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/08 22:07:35 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ double	compute_disorder(t_dlist *a)
 		while (j++ < (sizeof(a->value) - 1))
 		{
 			++total_pairs;
-			if (a->value[i] > a->value[j]) // Needs to be looked at when we have the final idea how we are gonna send data
+			if (a->value > a->value) // Needs to be looked at when we have the final idea how we are gonna send data
 				++mistakes;
 		}
 	}

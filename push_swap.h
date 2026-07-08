@@ -75,8 +75,10 @@ size_t		check_algorithm(char **argv, t_state *state);
 size_t		check_duplicates(t_dlist	*stack, int input_value);
 t_state		*create_state();
 t_benchmark	*create_benchmark();
-void		lst_add_back(t_state *state, t_dlist *new, t_dlist **head, t_dlist **tail);
-void		lst_add_front(t_state *state, t_dlist *new, t_dlist **head, t_dlist **tail);
+void		lst_add_back(t_dlist *new, t_dlist **head, t_dlist **tail);
+void		lst_add_front(t_dlist *new, t_dlist **head, t_dlist **tail);
+t_dlist	*lst_release_front(t_dlist **head, t_dlist **tail);
+t_dlist	*lst_release_back(t_dlist **head, t_dlist **tail);
 t_dlist 	*create_node(int value);
 void 		free_state(t_state **state);
 void		free_benchmark(t_benchmark **benchmark);
@@ -86,6 +88,10 @@ int			idx_of_min(t_dlist *stack);
 size_t		list_size(t_dlist *head);
 int			check_if_swap(t_dlist *head);
 
+void	pa(t_state *state, int counter);
+void	pb(t_state *state, int counter);
+void	ra(t_state *state, int counter);
+void	rra(t_state *state, int counter);
 
 
 #endif

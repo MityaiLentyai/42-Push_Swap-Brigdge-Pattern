@@ -23,11 +23,11 @@ void	pa(t_state *state, int counter)
 		return ;
 	if (!(state->stack_b->head))
 		return ;
-	tmp = lst_release_front(state, &state->stack_b->head,
+	tmp = lst_release_front(&state->stack_b->head,
 			&state->stack_b->head);
 	if (!tmp)
 		return ;
-	lst_add_front(state, tmp, &state->stack_a->head, &state->stack_a->tail);
+	lst_add_front(tmp, &state->stack_a->head, &state->stack_a->tail);
 	write(1, "PA\n", 3);
 	state->benchmark->pa++;
 }
@@ -43,11 +43,11 @@ void	pb(t_state *state, int counter)
 		return ;
 	if (!(state->stack_a->head))
 		return ;
-	tmp = lst_release_front(state, &state->stack_a->head,
+	tmp = lst_release_front(&state->stack_a->head,
 			&state->stack_a->tail);
 	if (!tmp)
 		return ;
-	lst_add_front(state, tmp, &state->stack_b->head, &state->stack_b->tail);
+	lst_add_front(tmp, &state->stack_b->head, &state->stack_b->tail);
 	write(1, "PB\n", 3);
 	state->benchmark->pb++;
 }
@@ -62,11 +62,11 @@ void	ra(t_state *state, int counter)
 		return ;
 	if (!(state->stack_a->head) || (!(state->stack_a->tail)))
 		return ;
-	tmp = lst_release_front(state, &state->stack_a->head,
+	tmp = lst_release_front(&state->stack_a->head,
 			&state->stack_a->tail);
 	if (!tmp)
 		return ;
-	lst_add_back(state, tmp, &state->stack_a->head, &state->stack_a->tail);
+	lst_add_back(tmp, &state->stack_a->head, &state->stack_a->tail);
 	write(1, "RA\n", 3);
 	state->benchmark->ra++;
 }
@@ -82,10 +82,10 @@ void	rra(t_state *state, int counter)
 		return ;
 	if (!(state->stack_a->head) || (!(state->stack_a->tail)))
 		return ;
-	tmp = lst_release_back(state, &state->stack_a->head, &state->stack_a->tail);
+	tmp = lst_release_back(&state->stack_a->head, &state->stack_a->tail);
 	if (!tmp)
 		return ;
-	lst_add_front(state, tmp, &state->stack_a->head, &state->stack_a->tail);
+	lst_add_front(tmp, &state->stack_a->head, &state->stack_a->tail);
 	write(1, "RRA\n", 3);
 	state->benchmark->rra++;
 }

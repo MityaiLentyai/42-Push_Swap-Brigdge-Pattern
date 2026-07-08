@@ -77,7 +77,7 @@ int	parse_input(int argc, char **argv, t_state *state)
 			// ERROR
 			return (1);
 		}
-		lst_add_back(state,curr_node, &(state->stack_a->head),&(state->stack_a->tail));
+		lst_add_back(curr_node, &(state->stack_a->head),&(state->stack_a->tail));
 		i++;
 	}
 	return (0);
