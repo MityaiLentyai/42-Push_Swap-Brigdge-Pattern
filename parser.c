@@ -73,7 +73,7 @@ int	parse_input(int argc, char **argv, t_state *state)
 		curr_node = create_node(input_value);
 		if (!curr_node)
 		{
-			//free_stack(state->head_a);
+			free_state(&state);
 			// ERROR
 			return (1);
 		}

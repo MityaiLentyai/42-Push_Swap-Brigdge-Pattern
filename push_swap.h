@@ -32,7 +32,8 @@ typedef struct list
 	int			value;
 	struct list	*next;
 	struct list	*prev;
-}	t_dlist;
+}				t_dlist;
+
 
 // to_print = 1 if we are supposed to print it; 0 otherwise
 // the rest is to follow how many of each operation we have already used
@@ -55,25 +56,36 @@ typedef struct s_benchmark
 // I suppose it will be easier if we use struct with current state of stacks etc
 // this way we can pass it as one argument to functions; sth like belowe
 
+typedef struct s_stack
+{
+	t_dlist	*head;
+	t_dlist	*tail;
+}			t_stack;
+
 typedef struct s_state
 {
-	t_dlist		*head_a;
-	t_dlist		*head_b;
-	t_dlist		*tail_a;
-	t_dlist		*tail_b;
+	t_stack		*stack_a;
+	t_stack		*stack_b;
 	t_algorithm	algorithm;
 	t_benchmark	*benchmark;
 }	t_state;
 
 int			parse_input(int argc, char **argv, t_state *state);
 size_t		check_algorithm(char **argv, t_state *state);
-size_t		check_duplicates(t_dlist *stack, int input_value);
-t_state		*create_state(void);
-t_benchmark	*create_benchmark(void);
+size_t		check_duplicates(t_dlist	*stack, int input_value);
+t_state		*create_state();
+t_benchmark	*create_benchmark();
 void		lst_add_back(t_state *state, t_dlist *new, t_dlist **head, t_dlist **tail);
 void		lst_add_front(t_state *state, t_dlist *new, t_dlist **head, t_dlist **tail);
-t_dlist		*lst_release_front(t_state *state, t_dlist **head, t_dlist **tail);
-t_dlist		*create_node(int value);
-void		op_pa(t_dlist **stack_a, t_dlist **stack_b, t_state *state);
+t_dlist 	*create_node(int value);
+void 		free_state(t_state **state);
+void		free_benchmark(t_benchmark **benchmark);
+void		simple(t_state *state);
+void 		free_dlist(t_dlist **head, t_dlist **tail);
+int			idx_of_min(t_dlist *stack);
+size_t		list_size(t_dlist *head);
+int			check_if_swap(t_dlist *head);
+
+
 
 #endif

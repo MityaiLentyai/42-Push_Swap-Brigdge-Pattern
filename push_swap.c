@@ -20,7 +20,6 @@ int	main(int argc, char **argv)
 		printf("%d\n", state->head_a->value);
 		state->head_a = state->head_a->next;
 	}
-
-	// free stacks
+	free_state(&state);
 	return (0);
 }
