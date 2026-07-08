@@ -23,12 +23,19 @@ t_state	*create_state()
     state->stack_b = create_stack();
     state->algorithm = NOT_SET;
     state->benchmark = create_benchmark();
-    state->tail_a = NULL;
-    state->tail_b = NULL;
     return (state);
 }
 
-void free_state(t_state **state)
+void    free_stack(t_stack  **stack)
+{
+    if (!stack || !*stack)
+        return ;
+    free_dlist(&(*stack)->head, &(*stack)->tail);
+    free(*stack);
+    return ;
+}
+
+void    free_state(t_state **state)
 {
     if (!state || !*state)
         return ;

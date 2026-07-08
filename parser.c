@@ -65,7 +65,7 @@ int	parse_input(int argc, char **argv, t_state *state)
 	while (i < argc)
 	{
 		input_value = ft_atoi(argv[i]); // change atoi so it wouldnt accept input like 25cds
-		if(!input_value || check_duplicates(state->head_a, input_value))
+		if(!input_value || check_duplicates(state->stack_a->head, input_value))
 		{
 			//ERROR
 			return (1);
@@ -77,7 +77,7 @@ int	parse_input(int argc, char **argv, t_state *state)
 			// ERROR
 			return (1);
 		}
-		lst_add_back(state,curr_node, &(state->head_a),&(state->tail_a));
+		lst_add_back(state,curr_node, &(state->stack_a->head),&(state->stack_a->tail));
 		i++;
 	}
 	return (0);

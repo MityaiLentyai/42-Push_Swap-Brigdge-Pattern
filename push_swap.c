@@ -15,10 +15,18 @@ int	main(int argc, char **argv)
 			return (1);
 		}
 	}
-	while (state->head_a)
+	printf("Before:\n");
+	while (state->stack_a->head)
 	{
-		printf("%d\n", state->head_a->value);
-		state->head_a = state->head_a->next;
+		printf("%d\n", state->stack_a->head->value);
+		state->stack_a->head = state->stack_a->head->next;
+	}
+	simple(state);
+	printf("After:\n");
+	while (state->stack_a->head)
+	{
+		printf("%d\n", state->stack_a->head->value);
+		state->stack_a->head = state->stack_a->head->next;
 	}
 	free_state(&state);
 	return (0);
