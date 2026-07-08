@@ -33,7 +33,7 @@ void	lst_add_back(t_state *state, t_dlist *to_add, t_dlist **head, t_dlist **tai
                 lst_add_front(state, to_add, head, tail);
                 return  ;
         }
-        else 
+        else
         {
                 (*tail)->next = to_add;
                 to_add->prev= *tail;
@@ -83,7 +83,7 @@ t_dlist	*lst_release_front(t_state *state, t_dlist **head, t_dlist **tail)
         return (temp);
 }
 
-// release_back neeeded - same as above but for back 
+// release_back neeeded - same as above but for back
 t_dlist	*lst_release_back(t_state *state, t_dlist **head, t_dlist **tail)
 {
 	t_dlist	*temp;
@@ -103,29 +103,20 @@ t_dlist	*lst_release_back(t_state *state, t_dlist **head, t_dlist **tail)
         return (temp);
 }
 // swap_firsts needed - swaps 2 first elements in stacks.
-
-int	idx_of_min(t_dlist *stack)
+void free_dlist(t_dlist **head, t_dlist **tail)
 {
-	int		min_value;
-	int		min_index;
-	int		current_index;
-	t_dlist	*current_node;
+	t_dlist	*curr;
+	t_dlist	*next;
 
-	if (!stack)
-		return (-1);
-	min_value = stack->value;
-	min_index = 0;
-	current_index = 0;
-	current_node = stack;
-	while (current_node)
+	if (!head || !*head)
+		return ;
+	curr = *head;
+	while (curr)
 	{
-		if (current_node->value < min_value)
-		{
-			min_value = current_node->value;
-			min_index = current_index;
-		}
-		current_node = current_node->next;
-		current_index++;
+		next = curr->next;
+		free(curr);
+		curr = next;
 	}
-	return (min_index);
+	*head = NULL;
+	*tail = NULL;
 }

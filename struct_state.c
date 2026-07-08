@@ -16,4 +16,13 @@ t_state	*create_state()
     return (state);
 }
 
-// void delete_state(t_state state);
+void free_state(t_state **state)
+{
+    if (!state || !*state)
+        return ;
+    free_dlist(&(*state)->head_a, &(*state)->tail_a);
+    free_dlist(&(*state)->head_b, &(*state)->tail_b);
+    free_benchmark(&(*state)->benchmark);
+    free(*state);
+    *state = NULL;
+}

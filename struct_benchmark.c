@@ -22,4 +22,10 @@ t_benchmark	*create_benchmark()
 	return (bench);
 }
 
-// void	delete_benchmark(t_benchmark bench);
+void	free_benchmark(t_benchmark **benchmark)
+{
+	if (!benchmark || !*benchmark)
+		return ;
+	free(*benchmark);
+	*benchmark = NULL;
+}
