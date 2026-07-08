@@ -2,7 +2,7 @@
 
 
 // 1 means duplicate found --> ERROR; 0 means everything fine
-size_t	check_duplicates(d_list	*stack, int input_value)
+size_t	check_duplicates(t_dlist	*stack, int input_value)
 {
 	while (stack)
 	{
@@ -46,7 +46,7 @@ int	parse_input(int argc, char **argv, t_state *state)
 {
 	int	i;
 	int	input_value;
-	d_list	*curr_node;
+	t_dlist	*curr_node;
 
 	i = 1;
 	if (check_algorithm(argv, state))
@@ -65,7 +65,7 @@ int	parse_input(int argc, char **argv, t_state *state)
 	while (i < argc)
 	{
 		input_value = ft_atoi(argv[i]); // change atoi so it wouldnt accept input like 25cds
-		if(!input_value || check_duplicates(state->stack_a, input_value))
+		if(!input_value || check_duplicates(state->head_a, input_value))
 		{
 			//ERROR
 			return (1);
@@ -73,11 +73,11 @@ int	parse_input(int argc, char **argv, t_state *state)
 		curr_node = create_node(input_value);
 		if (!curr_node)
 		{
-			//free_stack(state->stack_a);
+			//free_stack(state->head_a);
 			// ERROR
 			return (1);
 		}
-		lst_add_back(state->stack_a, curr_node);
+		lst_add_back(state,curr_node, &(state->head_a),&(state->tail_a));
 		i++;
 	}
 	return (0);

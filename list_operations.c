@@ -9,11 +9,11 @@
 // I would go with null-ended list, as it is easier to implement,
 // understand and not mess up pointers.
 
-d_list *create_node(int value)
+t_dlist	*create_node(int value)
 {
-	d_list * new_node;
+	t_dlist	*new_node;
 
-	new_node = malloc(sizeof(d_list));
+	new_node = malloc(sizeof(t_dlist));
 	if (!new_node)
 		return (NULL);
 	new_node->value = value;
@@ -22,56 +22,95 @@ d_list *create_node(int value)
 	return (new_node);
 }
 
-void	lst_add_back(d_list *stack, d_list *new)
+void	lst_add_back(t_state *state, t_dlist *to_add, t_dlist **head, t_dlist **tail)
 {
-        d_list *last;
+	t_dlist	*last;
 
-        if (!new)
-                return ;
-        if (stack == NULL)
+        if (!head || !tail || !to_add)
+		return ;
+        if (!(*head))
         {
-                stack = new;
-                new->prev = NULL;
-                new->next = NULL;
-                return ;
+                lst_add_front(state, to_add, head, tail);
+                return  ;
         }
-        last = ft_lstlast(stack);
-        last->next = new;
-        new->prev = last;
-        new->next = NULL;
+        else 
+        {
+                (*tail)->next = to_add;
+                to_add->prev= *tail;
+                to_add->next = NULL;
+                (*tail)->next = to_add;
+        }
 }
-void    lst_add_front(d_list **stack_ptr, d_list *new)
-{
-        if (!new)
-                return ;
-        new->next = *stack_ptr;
-        *stack_ptr = new;
-        new->prev = NULL;
-}
-d_list   *lst_release_front(d_list **root_pointer)
-{
-        d_list  *temp;
 
-        if (!root_pointer || !*root_pointer)
-                return ;
-        temp = *root_pointer;
-        *root_pointer = (*root_pointer)->next;
-        if (*root_pointer)
-                (*root_pointer)->prev = NULL;
+void	lst_add_front(t_state *state, t_dlist *to_add, t_dlist **head, t_dlist **tail)
+{
+	t_dlist	*tmp;
+
+	if (!head || !tail || !to_add)
+		return ;
+	if (!(*head))
+	{
+		to_add->prev = NULL;
+		to_add->next = NULL;
+		*head = to_add;
+		*tail = to_add;
+		return ;
+	}
+	else
+	{
+		to_add->next = *head;
+		to_add->prev = NULL;
+		*head = to_add;
+	}
+}
+
+t_dlist	*lst_release_front(t_state *state, t_dlist **head, t_dlist **tail)
+{
+	t_dlist	*temp;
+
+        if (!head || !tail || !(*head))
+                return (NULL);
+        if (*head == *tail)
+        {
+                temp = *head;
+                *head = NULL;
+                *tail = NULL;
+                return (temp);
+        }
+        temp = *head;
+        *head = (*head)->next;
+        (*head)->prev = NULL;
         return (temp);
 }
-void    lst_move_node(d_list **from_stack_ptr, d_list **to_stack_ptr)
+
+// release_back neeeded - same as above but for back 
+t_dlist	*lst_release_back(t_state *state, t_dlist **head, t_dlist **tail)
 {
-        lst_add_front(to_stack_ptr, lst_release_front(from_stack_ptr));
+	t_dlist	*temp;
+
+        if (!head || !tail || !(*tail))
+                return (NULL);
+        if (*head == *tail)
+        {
+                temp = *tail;
+                *head = NULL;
+                *tail = NULL;
+                return (temp);
+        }
+        temp = *tail;
+        *tail = (*tail)->next;
+        (*tail)->next = NULL;
+        return (temp);
 }
+// swap_firsts needed - swaps 2 first elements in stacks.
 
-int	idx_of_min(d_list * stack)
+int	idx_of_min(t_dlist *stack)
 {
-	int	min_value;
-	int	min_index;
-	int	current_index;
+	int		min_value;
+	int		min_index;
+	int		current_index;
+	t_dlist	*current_node;
 
-	d_list * current_node;
 	if (!stack)
 		return (-1);
 	min_value = stack->value;

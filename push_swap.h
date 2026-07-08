@@ -29,11 +29,10 @@ typedef enum e_algorithm
 
 typedef struct list
 {
-	int	value;
+	int			value;
 	struct list	*next;
 	struct list	*prev;
-}	d_list;
-
+}	t_dlist;
 
 // to_print = 1 if we are supposed to print it; 0 otherwise
 // the rest is to follow how many of each operation we have already used
@@ -58,20 +57,23 @@ typedef struct s_benchmark
 
 typedef struct s_state
 {
-	d_list	*stack_a;
-	d_list	*stack_b;
+	t_dlist		*head_a;
+	t_dlist		*head_b;
+	t_dlist		*tail_a;
+	t_dlist		*tail_b;
 	t_algorithm	algorithm;
 	t_benchmark	*benchmark;
 }	t_state;
 
 int			parse_input(int argc, char **argv, t_state *state);
 size_t		check_algorithm(char **argv, t_state *state);
-size_t		check_duplicates(d_list	*stack, int input_value);
-t_state		*create_state();
-t_benchmark	*create_benchmark();
-void		lst_add_back(d_list *stack, d_list *new);
-d_list 		*create_node(int value);
-
-
+size_t		check_duplicates(t_dlist *stack, int input_value);
+t_state		*create_state(void);
+t_benchmark	*create_benchmark(void);
+void		lst_add_back(t_state *state, t_dlist *new, t_dlist **head, t_dlist **tail);
+void		lst_add_front(t_state *state, t_dlist *new, t_dlist **head, t_dlist **tail);
+t_dlist		*lst_release_front(t_state *state, t_dlist **head, t_dlist **tail);
+t_dlist		*create_node(int value);
+void		op_pa(t_dlist **stack_a, t_dlist **stack_b, t_state *state);
 
 #endif

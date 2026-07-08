@@ -15,10 +15,10 @@ int	main(int argc, char **argv)
 			return (1);
 		}
 	}
-	while (state->stack_a)
+	while (state->head_a)
 	{
-		printf("%d\n", state->stack_a->value);
-		state->stack_a = state->stack_a->next;
+		printf("%d\n", state->head_a->value);
+		state->head_a = state->head_a->next;
 	}
 
 	// free stacks
