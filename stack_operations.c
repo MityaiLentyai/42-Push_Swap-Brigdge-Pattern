@@ -99,15 +99,13 @@ void	rra(t_state *state, int counter)
 }
 void	sa(t_state *state)
 {
-	t_dlist	*tmp;
-
 	if (!state || !state->benchmark || !(state->stack_a))
 		return ;
 	if (state->stack_a->head == state->stack_a->tail)
 		return ;
 	if (state->stack_a->head->value > state->stack_a->head->next->value)
 	{
-		swap_two_frist(&state->stack_a);
+		swap_two_first(&state->stack_a->head,&state->stack_a->tail);
 		write(1, "SA\n", 3);
 		state->benchmark->sa++;
 	}
