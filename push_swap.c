@@ -3,6 +3,7 @@
 int	main(int argc, char **argv)
 {
 	t_state	*state;
+	t_dlist	*current;
 
 	if (argc < 2)
 		return (0);
@@ -16,17 +17,19 @@ int	main(int argc, char **argv)
 		}
 	}
 	printf("Before:\n");
-	while (state->stack_a->head)
+	current = state->stack_a->head;
+	while (current)
 	{
-		printf("%d\n", state->stack_a->head->value);
-		state->stack_a->head = state->stack_a->head->next;
+		printf("%d\n", current->value);
+		current = current->next;
 	}
 	simple(state);
 	printf("After:\n");
-	while (state->stack_a->head)
+	current = state->stack_a->head;
+	while (current)
 	{
-		printf("%d\n", state->stack_a->head->value);
-		state->stack_a->head = state->stack_a->head->next;
+		printf("%d\n", current->value);
+		current = current->next;
 	}
 	free_state(&state);
 	return (0);

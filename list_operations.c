@@ -114,3 +114,30 @@ void free_dlist(t_dlist **head, t_dlist **tail)
 	*head = NULL;
 	*tail = NULL;
 }
+void	swap_two_first(t_dlist **stack)
+{
+	    t_dlist	*first;
+    t_dlist	*second;
+
+    if (!head || !*head || !(*head)->next)
+        return ;
+    first = *head;
+    second = first->next;
+	if (second == *tail)
+    {
+        first->next = NULL;
+        second->next = first;
+        first->prev = second;
+        second->prev = NULL;
+        *head = second;
+        *tail = first;
+        return ;
+    }
+
+    first->next = second->next;
+    second->next = first;
+    first->prev = second;
+    second->prev = NULL;
+    first->next->prev = first;
+    *head = second;
+}

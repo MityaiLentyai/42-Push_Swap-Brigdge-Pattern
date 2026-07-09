@@ -19,17 +19,19 @@ void	pa(t_state *state, int counter)
 {
 	t_dlist	*tmp;
 
-	if (!counter || !state)
+	if (!state || !state->benchmark || !(state->stack_b))
 		return ;
-	if (!(state->stack_b->head))
-		return ;
-	tmp = lst_release_front(&state->stack_b->head,
-			&state->stack_b->head);
-	if (!tmp)
-		return ;
-	lst_add_front(tmp, &state->stack_a->head, &state->stack_a->tail);
-	write(1, "PA\n", 3);
-	state->benchmark->pa++;
+	while (counter > 0)
+	{
+		tmp = lst_release_front(&state->stack_b->head,
+				&state->stack_b->tail);
+		if (!tmp)
+			return ;
+		lst_add_front(tmp, &state->stack_a->head, &state->stack_a->tail);
+		write(1, "PA\n", 3);
+		state->benchmark->pa++;
+		counter--;
+	}
 }
 
 // PB Take the first element at the top of a and put it ast the top of b.
@@ -39,17 +41,19 @@ void	pb(t_state *state, int counter)
 {
 	t_dlist	*tmp;
 
-	if (!counter || !state)
+	if (!state || !state->benchmark || !(state->stack_b))
 		return ;
-	if (!(state->stack_a->head))
-		return ;
-	tmp = lst_release_front(&state->stack_a->head,
-			&state->stack_a->tail);
-	if (!tmp)
-		return ;
-	lst_add_front(tmp, &state->stack_b->head, &state->stack_b->tail);
-	write(1, "PB\n", 3);
-	state->benchmark->pb++;
+	while (counter > 0)
+	{
+		tmp = lst_release_front(&state->stack_a->head,
+				&state->stack_a->tail);
+		if (!tmp)
+			return ;
+		lst_add_front(tmp, &state->stack_b->head, &state->stack_b->tail);
+		write(1, "PB\n", 3);
+		state->benchmark->pb++;
+		counter--;
+	}
 }
 // RA (rotate a): Shift up all elements of stack a by one.
 // The first element becomes the last one.
@@ -58,17 +62,19 @@ void	ra(t_state *state, int counter)
 {
 	t_dlist	*tmp;
 
-	if (!counter || !state)
+	if (!state || !state->benchmark || !(state->stack_a))
 		return ;
-	if (!(state->stack_a->head) || (!(state->stack_a->tail)))
-		return ;
-	tmp = lst_release_front(&state->stack_a->head,
-			&state->stack_a->tail);
-	if (!tmp)
-		return ;
-	lst_add_back(tmp, &state->stack_a->head, &state->stack_a->tail);
-	write(1, "RA\n", 3);
-	state->benchmark->ra++;
+	while (counter > 0)
+	{
+		tmp = lst_release_front(&state->stack_a->head,
+				&state->stack_a->tail);
+		if (!tmp)
+			return ;
+		lst_add_back(tmp, &state->stack_a->head, &state->stack_a->tail);
+		write(1, "RA\n", 3);
+		state->benchmark->ra++;
+		counter--;
+	}
 }
 
 // RRA (reverse rotate a): Shift down all elements of stack a by one.
@@ -78,14 +84,31 @@ void	rra(t_state *state, int counter)
 {
 	t_dlist	*tmp;
 
-	if (!counter || !state)
+	if (!state || !state->benchmark || !(state->stack_a))
 		return ;
-	if (!(state->stack_a->head) || (!(state->stack_a->tail)))
+	while (counter > 0)
+	{
+		tmp = lst_release_back(&state->stack_a->head, &state->stack_a->tail);
+		if (!tmp)
+			return ;
+		lst_add_front(tmp, &state->stack_a->head, &state->stack_a->tail);
+		write(1, "RRA\n", 4);
+		state->benchmark->rra++;
+		counter--;
+	}
+}
+void	sa(t_state *state)
+{
+	t_dlist	*tmp;
+
+	if (!state || !state->benchmark || !(state->stack_a))
 		return ;
-	tmp = lst_release_back(&state->stack_a->head, &state->stack_a->tail);
-	if (!tmp)
+	if (state->stack_a->head == state->stack_a->tail)
 		return ;
-	lst_add_front(tmp, &state->stack_a->head, &state->stack_a->tail);
-	write(1, "RRA\n", 3);
-	state->benchmark->rra++;
+	if (state->stack_a->head->value > state->stack_a->head->next->value)
+	{
+		swap_two_frist(&state->stack_a);
+		write(1, "SA\n", 3);
+		state->benchmark->sa++;
+	}
 }

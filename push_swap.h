@@ -87,11 +87,12 @@ void 		free_dlist(t_dlist **head, t_dlist **tail);
 int			idx_of_min(t_dlist *stack);
 size_t		list_size(t_dlist *head);
 int			check_if_swap(t_dlist *head);
-
 void	pa(t_state *state, int counter);
 void	pb(t_state *state, int counter);
 void	ra(t_state *state, int counter);
 void	rra(t_state *state, int counter);
+void	sa(t_state *state)
+void	swap_two_first(t_dlist **head, t_dlist **tail)
 
 
 #endif

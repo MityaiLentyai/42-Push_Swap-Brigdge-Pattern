@@ -12,11 +12,11 @@ int	check_if_swap(t_dlist *head)
 size_t	list_size(t_dlist *head)
 {
 	size_t	size;
-        t_dlist *tmp;
+	t_dlist *tmp;
 
-        tmp = head;
+	tmp = head;
 	size = 0;
-	while (!tmp)
+	while (tmp)
 	{
 		tmp = tmp->next;
 		size++;

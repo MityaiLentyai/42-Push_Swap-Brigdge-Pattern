@@ -9,12 +9,7 @@ void	simple(t_state *state)
 	int	stack_size;
 	int	min_idx;
 
-        while (state->stack_a->head)
-        {
-                printf("%d\n", state->stack_a->head->value);
-                state->stack_a->head = state->stack_a->head->next;
-        }
-        stack_size = list_size(state->stack_a->head);
+    stack_size = list_size(state->stack_a->head);
 	while (stack_size > 2)
 	{
 		min_idx = idx_of_min(state->stack_a->head);
