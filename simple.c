@@ -9,7 +9,7 @@ void	simple(t_state *state)
 	int	stack_size;
 	int	min_idx;
 
-    stack_size = list_size(state->stack_a->head);
+	stack_size = list_size(state->stack_a->head);
 	while (stack_size > 2)
 	{
 		min_idx = idx_of_min(state->stack_a->head);
@@ -17,11 +17,11 @@ void	simple(t_state *state)
 			rra(state, stack_size - min_idx);
 		else
 			ra(state, min_idx);
-		pa(state, 1);
+		pb(state, 1);
 		stack_size--;
 	}
-	// if (check_if_swap(state->stack_a->head))
-	// 	sa(state, 1);
+	if (check_if_swap(state->stack_a->head))
+		sa(state);
 	stack_size = list_size(state->stack_b->head);
 	pa(state, stack_size);
 }

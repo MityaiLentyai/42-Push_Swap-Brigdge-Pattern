@@ -17,6 +17,7 @@ int main(int argc, char **argv)
 		}
 	}
 	printf("Before:\n");
+	fflush(stdout);
 	current = state->stack_a->head;
 	while (current)
 	{
