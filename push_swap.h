@@ -91,8 +91,8 @@ void	pa(t_state *state, int counter);
 void	pb(t_state *state, int counter);
 void	ra(t_state *state, int counter);
 void	rra(t_state *state, int counter);
-void	sa(t_state *state)
-void	swap_two_first(t_dlist **head, t_dlist **tail)
+void	sa(t_state *state);
+void	swap_two_first(t_dlist **head, t_dlist **tail);
 
 
 #endif

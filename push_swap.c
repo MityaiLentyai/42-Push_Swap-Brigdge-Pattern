@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
 	t_state	*state;
 	t_dlist	*current;

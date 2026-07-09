@@ -28,18 +28,18 @@ $(NAME)_debug: $(DEBUG_OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) $(DEBUG_FLAGS) -c $< -o $@
 
 $(LIBFT):
-	$(MAKE) -C libft
+	@ $(MAKE) -C libft
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS) $(DEBUG_OBJS)
-	$(MAKE) -C libft clean
+	@ $(RM) $(OBJS) $(DEBUG_OBJS)
+	@ $(MAKE) -C libft clean
 
 fclean: clean
-	$(RM) $(NAME) $(NAME)_debug
-	$(MAKE) -C libft fclean
+	@ $(RM) $(NAME) $(NAME)_debug
+	@ $(MAKE) -C libft fclean
 
 re: fclean all
 
