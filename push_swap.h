@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:30:31 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/10 02:33:12 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/10 12:23:11 by nsuszano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 # include "libft/libft.h"
 
 // Enum to mark the algorithm type we are supposed to use.
-// We can use either enum or normal struck with int 
+// We can use either enum or normal struck with int
 // variable to mark the algorithm type.
-// But enum seems more appropriate, since it keep 
+// But enum seems more appropriate, since it keep
 // one current value - easy to check if
 // the algorithm type is already set
 typedef enum e_algorithm
@@ -40,7 +40,7 @@ typedef enum e_algorithm
 // IDK what is "better programming practice" - LMK, what you think about it.
 
 // For now, i am starting to implement null-eneded double linked list,
-// but, in case, it will not take much to modify basic 
+// but, in case, it will not take much to modify basic
 // list operations to circular one.
 
 typedef struct list
@@ -83,6 +83,7 @@ typedef struct s_state
 	t_stack		*stack_b;
 	t_algorithm	algorithm;
 	t_benchmark	*benchmark;
+	double 		disorder;
 }	t_state;
 
 int			parse_input(int argc, char **argv, t_state *state);
@@ -108,5 +109,6 @@ void		ra(t_state *state, int counter);
 void		rra(t_state *state, int counter);
 void		sa(t_state *state);
 void		swap_two_first(t_dlist **head, t_dlist **tail);
+double		compute_disorder(t_stack *stack);
 
 #endif

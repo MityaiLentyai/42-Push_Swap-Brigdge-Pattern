@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_state.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 03:27:32 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/10 03:27:33 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/10 12:22:38 by nsuszano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_state	*create_state(void)
 	state->stack_b = create_stack();
 	state->algorithm = NOT_SET;
 	state->benchmark = create_benchmark();
+	state->disorder = 0;
 	return (state);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:27:00 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/10 03:59:58 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/10 12:42:09 by nsuszano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	helper_main(t_state *state)
 		printf("%d\n", current->value);
 		current = current->next;
 	}
+	state->disorder = compute_disorder(state->stack_a);
+	printf("Disorder: %.2f\n", state->disorder);
 	simple(state);
 	printf("After:\n");
 	current = state->stack_a->head;
@@ -49,8 +51,6 @@ int	main(int argc, char **argv)
 		}
 	}
 	printf("Before:\n");
-	fflush(stdout);
-	// is this allowed?
 	helper_main(state);
 	return (0);
 }
