@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:27:00 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/10 03:39:32 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/10 03:59:58 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	helper_main(t_state *state)
 {
-       	t_dlist	*current;
+	t_dlist	*current;
 
 	current = state->stack_a->head;
 	while (current)
@@ -49,7 +49,8 @@ int	main(int argc, char **argv)
 		}
 	}
 	printf("Before:\n");
-       	fflush(stdout); // is this allowed?
-        helper_main (state);
-        return (0);
+	fflush(stdout);
+	// is this allowed?
+	helper_main(state);
+	return (0);
 }
