@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/10 02:30:31 by dzzayats          #+#    #+#             */
+/*   Updated: 2026/07/10 02:33:12 by dzzayats         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -8,8 +20,10 @@
 # include "libft/libft.h"
 
 // Enum to mark the algorithm type we are supposed to use.
-// We can use either enum or normal struck with int variable to mark the algorithm type.
-// But enum seems more appropriate, since it keep one current value - easy to check if
+// We can use either enum or normal struck with int 
+// variable to mark the algorithm type.
+// But enum seems more appropriate, since it keep 
+// one current value - easy to check if
 // the algorithm type is already set
 typedef enum e_algorithm
 {
@@ -20,20 +34,21 @@ typedef enum e_algorithm
 	ADAPTIVE
 }	t_algorithm;
 
-// BENCHMARK - I suggest to use int/bool variable to mark if we have to print benchmark or not.
+// BENCHMARK - I suggest to use int/bool variable to mark if we have to print
+// benchmark or not.
 // But we can also make struct for it, if it seems more consequent.
-// IDK what is "better programming practice" - let me know, what you think about it.
+// IDK what is "better programming practice" - LMK, what you think about it.
 
 // For now, i am starting to implement null-eneded double linked list,
-// but, in case, it will not take much to modify basic list operations to circular one.
+// but, in case, it will not take much to modify basic 
+// list operations to circular one.
 
 typedef struct list
 {
 	int			value;
 	struct list	*next;
 	struct list	*prev;
-}				t_dlist;
-
+}	t_dlist;
 
 // to_print = 1 if we are supposed to print it; 0 otherwise
 // the rest is to follow how many of each operation we have already used
@@ -60,7 +75,7 @@ typedef struct s_stack
 {
 	t_dlist	*head;
 	t_dlist	*tail;
-}			t_stack;
+}	t_stack;
 
 typedef struct s_state
 {
@@ -72,27 +87,26 @@ typedef struct s_state
 
 int			parse_input(int argc, char **argv, t_state *state);
 size_t		check_algorithm(char **argv, t_state *state);
-size_t		check_duplicates(t_dlist	*stack, int input_value);
-t_state		*create_state();
-t_benchmark	*create_benchmark();
+size_t		check_duplicates(t_dlist *stack, int input_value);
+t_state		*create_state(void);
+t_benchmark	*create_benchmark(void);
 void		lst_add_back(t_dlist *new, t_dlist **head, t_dlist **tail);
 void		lst_add_front(t_dlist *new, t_dlist **head, t_dlist **tail);
-t_dlist	*lst_release_front(t_dlist **head, t_dlist **tail);
-t_dlist	*lst_release_back(t_dlist **head, t_dlist **tail);
-t_dlist 	*create_node(int value);
-void 		free_state(t_state **state);
+t_dlist		*lst_release_front(t_dlist **head, t_dlist **tail);
+t_dlist		*lst_release_back(t_dlist **head, t_dlist **tail);
+t_dlist		*create_node(int value);
+void		free_state(t_state **state);
 void		free_benchmark(t_benchmark **benchmark);
 void		simple(t_state *state);
-void 		free_dlist(t_dlist **head, t_dlist **tail);
+void		free_dlist(t_dlist **head, t_dlist **tail);
 int			idx_of_min(t_dlist *stack);
 size_t		list_size(t_dlist *head);
 int			check_if_swap(t_dlist *head);
-void	pa(t_state *state, int counter);
-void	pb(t_state *state, int counter);
-void	ra(t_state *state, int counter);
-void	rra(t_state *state, int counter);
-void	sa(t_state *state);
-void	swap_two_first(t_dlist **head, t_dlist **tail);
-
+void		pa(t_state *state, int counter);
+void		pb(t_state *state, int counter);
+void		ra(t_state *state, int counter);
+void		rra(t_state *state, int counter);
+void		sa(t_state *state);
+void		swap_two_first(t_dlist **head, t_dlist **tail);
 
 #endif

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   struct_benchmark.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/10 03:26:58 by dzzayats          #+#    #+#             */
+/*   Updated: 2026/07/10 03:27:56 by dzzayats         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-t_benchmark	*create_benchmark()
+t_benchmark	*create_benchmark(void)
 {
 	t_benchmark	*bench;
 

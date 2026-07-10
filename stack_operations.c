@@ -97,6 +97,7 @@ void	rra(t_state *state, int counter)
 		counter--;
 	}
 }
+
 void	sa(t_state *state)
 {
 	if (!state || !state->benchmark || !(state->stack_a))
@@ -105,7 +106,7 @@ void	sa(t_state *state)
 		return ;
 	if (state->stack_a->head->value > state->stack_a->head->next->value)
 	{
-		swap_two_first(&state->stack_a->head,&state->stack_a->tail);
+		swap_two_first(&state->stack_a->head, &state->stack_a->tail);
 		write(1, "SA\n", 3);
 		state->benchmark->sa++;
 	}

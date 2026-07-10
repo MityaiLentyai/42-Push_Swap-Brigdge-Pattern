@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   help_search_func.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/10 02:20:46 by dzzayats          #+#    #+#             */
+/*   Updated: 2026/07/10 02:21:37 by dzzayats         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	check_if_swap(t_dlist *head)
@@ -12,7 +24,7 @@ int	check_if_swap(t_dlist *head)
 size_t	list_size(t_dlist *head)
 {
 	size_t	size;
-	t_dlist *tmp;
+	t_dlist	*tmp;
 
 	tmp = head;
 	size = 0;
@@ -23,6 +35,7 @@ size_t	list_size(t_dlist *head)
 	}
 	return (size);
 }
+
 int	idx_of_min(t_dlist *stack)
 {
 	int		min_value;

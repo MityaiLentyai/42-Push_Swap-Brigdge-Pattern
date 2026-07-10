@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/10 02:25:44 by dzzayats          #+#    #+#             */
+/*   Updated: 2026/07/10 02:26:20 by dzzayats         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-
 // 1 means duplicate found --> ERROR; 0 means everything fine
-size_t	check_duplicates(t_dlist	*stack, int input_value)
+
+size_t	check_duplicates(t_dlist *stack, int input_value)
 {
 	while (stack)
 	{
@@ -42,10 +54,11 @@ size_t	check_algorithm(char **argv, t_state *state)
 	return (0);
 }
 // 0 means success, 1 means failure
+
 int	parse_input(int argc, char **argv, t_state *state)
 {
-	int	i;
-	int	input_value;
+	int		i;
+	int		input_value;
 	t_dlist	*curr_node;
 
 	i = 1;
@@ -64,8 +77,9 @@ int	parse_input(int argc, char **argv, t_state *state)
 	}
 	while (i < argc)
 	{
-		input_value = ft_atoi(argv[i]); // change atoi so it wouldnt accept input like 25cds
-		if(!input_value || check_duplicates(state->stack_a->head, input_value))
+		input_value = ft_atoi(argv[i]);
+		// change atoi so it wouldnt accept input like 25cds
+		if (!input_value || check_duplicates(state->stack_a->head, input_value))
 		{
 			//ERROR
 			return (1);
@@ -77,7 +91,7 @@ int	parse_input(int argc, char **argv, t_state *state)
 			// ERROR
 			return (1);
 		}
-		lst_add_back(curr_node, &(state->stack_a->head),&(state->stack_a->tail));
+		lst_add_back(curr_node, &(state->stack_a->head), &(state->stack_a->tail));
 		i++;
 	}
 	return (0);
