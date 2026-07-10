@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   disorder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 15:05:13 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/10 12:41:27 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/10 18:43:03 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ double	compute_disorder(t_stack *stack)
 		tmp1 = tmp1->next;
 	}
 	if (total_pairs)
-		return ((double)mistakes/(double)total_pairs);
+		return ((double) mistakes / (double) total_pairs);
 	else return (0);
 }

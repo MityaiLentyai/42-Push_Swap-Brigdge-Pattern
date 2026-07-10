@@ -32,6 +32,7 @@ void	helper_main(t_state *state)
 		printf("%d\n", current->value);
 		current = current->next;
 	}
+	call_benchmark(state);
 	free_state(&state);
 }
 

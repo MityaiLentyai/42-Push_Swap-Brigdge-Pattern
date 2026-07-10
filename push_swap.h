@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:30:31 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/10 12:23:11 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/10 17:51:37 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,6 @@ void		rra(t_state *state, int counter);
 void		sa(t_state *state);
 void		swap_two_first(t_dlist **head, t_dlist **tail);
 double		compute_disorder(t_stack *stack);
+void		call_benchmark(t_state *state);
 
 #endif
