@@ -34,8 +34,8 @@ void	pa(t_state *state, int counter)
 	}
 }
 
-// PB Take the first element at the top of a and put it ast the top of b.
-// Do nothing if a is empty.
+// PB Take the first element at the top of A and put it ast the top of B.
+// Do nothing if A is empty.
 
 void	pb(t_state *state, int counter)
 {
@@ -77,7 +77,7 @@ void	ra(t_state *state, int counter)
 	}
 }
 
-// RRA (reverse rotate a): Shift down all elements of stack a by one.
+// RRA (reverse rotate A): Shift down all elements of stack A by one.
 // The last element becomes the first one.
 
 void	rra(t_state *state, int counter)
@@ -97,6 +97,9 @@ void	rra(t_state *state, int counter)
 		counter--;
 	}
 }
+// SA Swap the first two elements at the top of stack A.
+// Do nothing if there is only one or no elements.
+// TODO add counter?
 
 void	sa(t_state *state)
 {

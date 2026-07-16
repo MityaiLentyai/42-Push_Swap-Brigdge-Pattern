@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 03:28:09 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/10 18:35:42 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/16 12:21:48 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	simple(t_state *state)
 	int	stack_size;
 	int	min_idx;
 
-        state->algorithm = SIMPLE;
+	state->algorithm = SIMPLE;
 	stack_size = list_size(state->stack_a->head);
 	while (stack_size > 2)
 	{
