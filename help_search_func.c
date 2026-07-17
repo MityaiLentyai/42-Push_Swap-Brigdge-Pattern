@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   help_search_func.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:20:46 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/10 02:21:37 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/17 16:53:01 by nsuszano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_if_swap(t_dlist *head)
+size_t	check_if_swap(t_dlist *head)
 {
 	if (!head || !head->next)
 		return (0);
@@ -36,19 +36,19 @@ size_t	list_size(t_dlist *head)
 	return (size);
 }
 
-int	idx_of_min(t_dlist *stack)
+size_t	idx_of_min(t_dlist *head)
 {
 	int		min_value;
-	int		min_index;
-	int		current_index;
+	size_t	min_index;
+	size_t	current_index;
 	t_dlist	*current_node;
 
-	if (!stack)
+	if (!head)
 		return (-1);
-	min_value = stack->value;
+	min_value = head->value;
 	min_index = 0;
 	current_index = 0;
-	current_node = stack;
+	current_node = head;
 	while (current_node)
 	{
 		if (current_node->value < min_value)
@@ -60,4 +60,30 @@ int	idx_of_min(t_dlist *stack)
 		current_index++;
 	}
 	return (min_index);
+}
+
+size_t	idx_of_max(t_dlist *head)
+{
+	int		max_value;
+	size_t	max_index;
+	size_t	current_index;
+	t_dlist	*current_node;
+
+	if (!head)
+		return (-1);
+	max_value = head->value;
+	max_index = 0;
+	current_index = 0;
+	current_node = head;
+	while (current_node)
+	{
+		if (current_node->value > max_value)
+		{
+			max_value = current_node->value;
+			max_index = current_index;
+		}
+		current_node = current_node->next;
+		current_index++;
+	}
+	return (max_index);
 }

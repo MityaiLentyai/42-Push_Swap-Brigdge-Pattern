@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simple.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 03:28:09 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/10 18:35:42 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/17 16:51:19 by nsuszano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,11 @@
 
 void	simple(t_state *state)
 {
-	int	stack_size;
-	int	min_idx;
+	size_t	stack_size;
+	size_t	min_idx;
 
-        state->algorithm = SIMPLE;
 	stack_size = list_size(state->stack_a->head);
-	while (stack_size > 2)
+	while (stack_size > 3)
 	{
 		min_idx = idx_of_min(state->stack_a->head);
 		if (min_idx > (stack_size - 1) / 2)
@@ -33,8 +32,7 @@ void	simple(t_state *state)
 		pb(state, 1);
 		stack_size--;
 	}
-	if (check_if_swap(state->stack_a->head))
-		sa(state);
+	small_stack(state->stack_a->head);
 	stack_size = list_size(state->stack_b->head);
 	pa(state, stack_size);
 }
