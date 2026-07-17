@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:30:31 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/10 17:51:37 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/17 18:16:46 by nsuszano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,9 @@ void		free_state(t_state **state);
 void		free_benchmark(t_benchmark **benchmark);
 void		simple(t_state *state);
 void		free_dlist(t_dlist **head, t_dlist **tail);
-int			idx_of_min(t_dlist *stack);
+size_t			idx_of_min(t_dlist *stack);
 size_t		list_size(t_dlist *head);
-int			check_if_swap(t_dlist *head);
+size_t			check_if_swap(t_dlist *head);
 void		pa(t_state *state, int counter);
 void		pb(t_state *state, int counter);
 void		ra(t_state *state, int counter);
@@ -111,5 +111,13 @@ void		sa(t_state *state);
 void		swap_two_first(t_dlist **head, t_dlist **tail);
 double		compute_disorder(t_stack *stack);
 void		call_benchmark(t_state *state);
+void		small_stack(t_state *state);
+size_t		idx_of_max(t_dlist *head);
+void		sort_int(int *tab, size_t n);
+void 		list_into_array(int *list_copy, t_dlist *head);
+size_t		change_numbers(t_dlist *head);
+size_t		chunk_size_cal(size_t n);
+void		medium(t_state *state);
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 03:28:09 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/17 16:51:19 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/17 17:58:25 by nsuszano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	simple(t_state *state)
 		pb(state, 1);
 		stack_size--;
 	}
-	small_stack(state->stack_a->head);
+	small_stack(state);
 	stack_size = list_size(state->stack_b->head);
 	pa(state, stack_size);
 }

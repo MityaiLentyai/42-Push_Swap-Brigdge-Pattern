@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:27:00 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/15 16:13:42 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/17 18:12:41 by nsuszano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,19 @@ void	helper_main(t_state *state)
 	free_state(&state);
 }
 
-// int	main(int argc, char **argv)
-// {
-// 	t_state	*state;
+int	main(int argc, char **argv)
+{
+	t_state	*state;
 
-// 	if (argc < 2)
-// 		return (0);
-// 	else
-// 	{
-// 		state = create_state();
-// 		if (!state || parse_input(argc, argv, state))
-// 		{
-// 			// Handle error in parsing input
-// 			return (1);
-// 		}
-// 	}
-// 	printf("Before:\n");
-// 	helper_main(state);
-// 	return (0);
-// }
+	if (argc < 2)
+		return (0);
+	else
+	{
+		state = create_state();
+		if (!state || parse_input(argc, argv, state))
+			return (0);
+	}
+	printf("Before:\n");
+	helper_main(state);
+	return (0);
+}
