@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   small_stack_case.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 03:25:52 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/17 16:57:32 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/17 21:36:31 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,10 @@ void	small_stack(t_state *state)
 			sa(state);
 		return ;
 	}
-	// for size == 3
+	if (size_of_stack_a == 3)
+	{
+		check_if_sorted(state);
+		check_small_stack(state);
+		return ;
+	}
 }

@@ -6,13 +6,13 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:54:49 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/17 18:53:23 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/17 21:13:29 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-// RR ra and rb at the same time.
 
+// RR: ra and rb at the same time.
 void	rr(t_state *state, int counter)
 {
 	t_dlist	*tmp;
@@ -40,9 +40,7 @@ void	rr(t_state *state, int counter)
 	write(1, "RR\n", 4);
 }
 
-// SS - SA and SB at the same time.
-// ??? do we do part of it (sa/sb separately?) if either one fails,Looks unfair
-
+// SS: SA and SB at the same time.
 void	ss(t_state *state)
 {
 	if (!state || !state->benchmark || !state->stack_a || !state->stack_b)
@@ -56,8 +54,7 @@ void	ss(t_state *state)
 	state->benchmark->ss++;
 }
 
-// RRR - rra and rrb at the same time
-
+// RRR: rra and rrb at the same time
 void	rrr(t_state *state, int counter)
 {
 	t_dlist	*tmp;

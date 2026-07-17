@@ -6,15 +6,14 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:23:40 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/17 18:09:29 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/17 21:23:57 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// SA Swap the first two elements at the top of stack A.
+// Sswap A: Swap the first two elements at the top of stack A.
 // Do nothing if there is only one or no elements.
-// TODO add counter?
 void	sa(t_state *state)
 {
 	if (!state || !state->benchmark || !state->stack_a)
@@ -26,9 +25,8 @@ void	sa(t_state *state)
 	state->benchmark->sa++;
 }
 
-// SB - Swap the first two elements at the top of stack b.
+// Swap B: - Swap the first two elements at the top of stack b.
 // Do nothing if there is only one or no elements
-// TODO? add counter?
 void	sb(t_state *state)
 {
 	if (!state || !state->benchmark || !state->stack_b)
@@ -40,7 +38,7 @@ void	sb(t_state *state)
 	state->benchmark->sb++;
 }
 
-// RB - (rotate B): Shift up all elements of stack B by one. 
+// Rotate B: Shift up all elements of stack B by one. 
 // The first element becomes the last one.
 void	rb(t_state *state, int counter)
 {
@@ -61,7 +59,7 @@ void	rb(t_state *state, int counter)
 	}
 }
 
-// RRB - (reverse rotate b): Shift down all elements of stack b by one. 
+// Reverse Rotate B: Shift down all elements of stack b by one. 
 // The last element becomes the first one
 void	rrb(t_state *state, int counter)
 {
