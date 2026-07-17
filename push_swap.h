@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:30:31 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/10 17:51:37 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/16 14:02:35 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,33 +83,44 @@ typedef struct s_state
 	t_stack		*stack_b;
 	t_algorithm	algorithm;
 	t_benchmark	*benchmark;
-	double 		disorder;
+	double		disorder;
 }	t_state;
 
+double		compute_disorder(t_stack *stack);
 int			parse_input(int argc, char **argv, t_state *state);
 size_t		check_algorithm(char **argv, t_state *state);
 size_t		check_duplicates(t_dlist *stack, int input_value);
 t_state		*create_state(void);
 t_benchmark	*create_benchmark(void);
+
+t_dlist		*create_node(int value);
+void		free_state(t_state **state);
+
+void		free_benchmark(t_benchmark **benchmark);
+
+void		simple(t_state *state);
+
+void		free_dlist(t_dlist **head, t_dlist **tail);
 void		lst_add_back(t_dlist *new, t_dlist **head, t_dlist **tail);
 void		lst_add_front(t_dlist *new, t_dlist **head, t_dlist **tail);
 t_dlist		*lst_release_front(t_dlist **head, t_dlist **tail);
 t_dlist		*lst_release_back(t_dlist **head, t_dlist **tail);
-t_dlist		*create_node(int value);
-void		free_state(t_state **state);
-void		free_benchmark(t_benchmark **benchmark);
-void		simple(t_state *state);
-void		free_dlist(t_dlist **head, t_dlist **tail);
 int			idx_of_min(t_dlist *stack);
 size_t		list_size(t_dlist *head);
 int			check_if_swap(t_dlist *head);
+void		swap_two_first(t_dlist **head, t_dlist **tail);
+void		call_benchmark(t_state *state);
+
 void		pa(t_state *state, int counter);
 void		pb(t_state *state, int counter);
 void		ra(t_state *state, int counter);
-void		rra(t_state *state, int counter);
+void		rb(t_state *state, int counter);
+void		rr(t_state *state, int counter);
 void		sa(t_state *state);
-void		swap_two_first(t_dlist **head, t_dlist **tail);
-double		compute_disorder(t_stack *stack);
-void		call_benchmark(t_state *state);
+void		sb(t_state *state);
+void		ss(t_state *state);
+void		rra(t_state *state, int counter);
+void		rrb(t_state *state, int counter);
+void		rrr(t_state *state, int counter);
 
 #endif

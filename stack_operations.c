@@ -19,7 +19,7 @@ void	pa(t_state *state, int counter)
 {
 	t_dlist	*tmp;
 
-	if (!state || !state->benchmark || !(state->stack_b))
+	if (!state || !state->benchmark || !state->stack_a || !state->stack_b)
 		return ;
 	while (counter > 0)
 	{
@@ -34,8 +34,8 @@ void	pa(t_state *state, int counter)
 	}
 }
 
-// PB Take the first element at the top of a and put it ast the top of b.
-// Do nothing if a is empty.
+// PB Take the first element at the top of A and put it ast the top of B.
+// Do nothing if A is empty.
 
 void	pb(t_state *state, int counter)
 {
@@ -77,7 +77,7 @@ void	ra(t_state *state, int counter)
 	}
 }
 
-// RRA (reverse rotate a): Shift down all elements of stack a by one.
+// RRA (reverse rotate A): Shift down all elements of stack A by one.
 // The last element becomes the first one.
 
 void	rra(t_state *state, int counter)
@@ -95,19 +95,5 @@ void	rra(t_state *state, int counter)
 		write(1, "RRA\n", 4);
 		state->benchmark->rra++;
 		counter--;
-	}
-}
-
-void	sa(t_state *state)
-{
-	if (!state || !state->benchmark || !(state->stack_a))
-		return ;
-	if (state->stack_a->head == state->stack_a->tail)
-		return ;
-	if (state->stack_a->head->value > state->stack_a->head->next->value)
-	{
-		swap_two_first(&state->stack_a->head, &state->stack_a->tail);
-		write(1, "SA\n", 3);
-		state->benchmark->sa++;
 	}
 }
