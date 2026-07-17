@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_operations_3.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:54:49 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/16 14:03:44 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/17 17:03:30 by nsuszano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ void	ss(t_state *state)
 		return ;
 	if (state->stack_b->head == state->stack_b->tail)
 		return ;
-	sa(state);
-	sb(state);
+	swap_two_first(&state->stack_b->head, &state->stack_b->tail);
+	swap_two_first(&state->stack_a->head, &state->stack_a->tail);
+	write(1, "SS\n", 3);
+	state->benchmark->ss++;
 }
 
 // RRR - rra and rrb at the same time
