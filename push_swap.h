@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:30:31 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/17 18:59:26 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/17 19:06:54 by nsuszano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ size_t		idx_of_max(t_dlist *head);
 void		sort_int(int *tab, size_t n);
 void 		list_into_array(int *list_copy, t_dlist *head);
 size_t		change_numbers(t_dlist *head);
-size_t		chunk_size_cal(size_t n);
+int			chunk_size_cal(int n);
 void		medium(t_state *state);
 
 

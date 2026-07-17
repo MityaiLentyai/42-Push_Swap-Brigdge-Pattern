@@ -6,7 +6,7 @@
 /*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:27:00 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/17 18:12:41 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/17 19:42:36 by nsuszano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,23 @@ void	helper_main(t_state *state)
 		current = current->next;
 	}
 	state->disorder = compute_disorder(state->stack_a);
+	if (state->algorithm == SIMPLE)
+		simple(state);
+	else if (state->algorithm == MEDIUM)
+		medium(state);
+	else if (state->algorithm == COMPLEX)
+		medium(state); //complex
+	else if (state->algorithm == ADAPTIVE)
+	{
+		if (state->disorder < 0.2)
+			simple(state);
+		else if (state->disorder < 0.5)
+			medium(state);
+		else
+			medium(state);	//complex
+	}
 	printf("Disorder: %.2f\n", state->disorder);
-	simple(state);
+	medium(state);
 	printf("After:\n");
 	current = state->stack_a->head;
 	while (current)

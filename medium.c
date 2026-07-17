@@ -6,7 +6,7 @@
 /*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/17 14:32:35 by nsuszano          #+#    #+#             */
-/*   Updated: 2026/07/17 16:56:03 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/17 19:34:20 by nsuszano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ size_t	change_numbers(t_dlist *head)
 		return (1);	// if so then is would already been stopped 
 	list_length = list_size(head);
 	list_copy = malloc(list_length*sizeof(int));
-	if (list_copy)
+	if (!list_copy)
 		return (1);
 	list_into_array(list_copy, head);
 	sort_int(list_copy, list_length);
@@ -75,9 +75,9 @@ size_t	change_numbers(t_dlist *head)
 	return (0);
 }
 
-size_t	chunk_size_cal(size_t n)
+int	chunk_size_cal(int n)
 {
-	size_t sqrt;
+	int sqrt;
 
 	sqrt = 0;
 	while (sqrt * sqrt < n)
@@ -88,11 +88,11 @@ size_t	chunk_size_cal(size_t n)
 
 void	medium(t_state *state)
 {
-	size_t	chunk_size;
-	size_t	min_value;	// numbers changed --> from 0 to size - 1; like indexes in array
+	int		chunk_size;
+	int		min_value;	// numbers changed --> from 0 to size - 1; like indexes in array
 	size_t	size_of_stack;
 	size_t	max_idx;
-	
+
 	size_of_stack = list_size(state->stack_a->head);
 	if (size_of_stack <= 3)
 		return small_stack(state);
@@ -121,10 +121,10 @@ void	medium(t_state *state)
 	{
 		max_idx = idx_of_max(state->stack_b->head);
 		if (max_idx > (size_of_stack - 1) / 2)
-			rra(state, size_of_stack - max_idx);
+			rrb(state, size_of_stack - max_idx);
 		else
-			ra(state, max_idx);
-		pb(state, 1);
+			rb(state, max_idx);
+		pa(state, 1);
 		size_of_stack--;	
 	}
 }
