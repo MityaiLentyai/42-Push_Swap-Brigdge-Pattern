@@ -17,16 +17,13 @@
 // TODO add counter?
 void	sa(t_state *state)
 {
-	if (!state || !state->benchmark || !(state->stack_a))
+	if (!state || !state->benchmark || !state->stack_a)
 		return ;
-	if (state->stack_a->head == state->stack_a->tail)
+	if (!state->stack_a->head || !state->stack_a->head->next)
 		return ;
-	if (state->stack_a->head->value > state->stack_a->head->next->value)
-	{
-		swap_two_first(&state->stack_a->head, &state->stack_a->tail);
-		write(1, "SA\n", 3);
-		state->benchmark->sa++;
-	}
+	swap_two_first(&state->stack_a->head, &state->stack_a->tail);
+	write(1, "SA\n", 3);
+	state->benchmark->sa++;
 }
 
 // SB - Swap the first two elements at the top of stack b.
@@ -34,16 +31,13 @@ void	sa(t_state *state)
 // TODO? add counter?
 void	sb(t_state *state)
 {
-	if (!state || !state->benchmark || !(state->stack_b))
+	if (!state || !state->benchmark || !state->stack_b)
 		return ;
-	if (state->stack_b->head == state->stack_b->tail)
+	if (!state->stack_b->head || !state->stack_b->head->next)
 		return ;
-	if (state->stack_b->head->value > state->stack_b->head->next->value)
-	{
-		swap_two_first(&state->stack_b->head, &state->stack_b->tail);
-		write(1, "SB\n", 3);
-		state->benchmark->sb++;
-	}
+	swap_two_first(&state->stack_b->head, &state->stack_b->tail);
+	write(1, "SB\n", 3);
+	state->benchmark->sb++;
 }
 
 // RB - (rotate B): Shift up all elements of stack B by one. 

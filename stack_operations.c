@@ -19,7 +19,7 @@ void	pa(t_state *state, int counter)
 {
 	t_dlist	*tmp;
 
-	if (!state || !state->benchmark || !(state->stack_b))
+	if (!state || !state->benchmark || !state->stack_a || !state->stack_b)
 		return ;
 	while (counter > 0)
 	{
