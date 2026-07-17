@@ -6,9 +6,10 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 03:28:09 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/17 18:54:55 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/17 18:57:45 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "push_swap.h"
 
@@ -32,7 +33,7 @@ void	simple(t_state *state)
 		pb(state, 1);
 		stack_size--;
 	}
-	small_stack(state->stack_a->head);
+	small_stack(state);
 	stack_size = list_size(state->stack_b->head);
 	pa(state, stack_size);
 }

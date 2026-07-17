@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:25:44 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/10 02:26:20 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/17 18:34:49 by nsuszano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,31 @@ size_t	check_algorithm(char **argv, t_state *state)
 	}
 	return (0);
 }
+
+static void	free_split(char **split)
+{
+	size_t	i;
+
+	if (!split || !*split)
+		return ;
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
+}
+
 // 0 means success, 1 means failure
 
 int	parse_input(int argc, char **argv, t_state *state)
 {
-	int		i;
-	int		input_value;
-	t_dlist	*curr_node;
+	int			i;
+	char		**arguments;
+	char		**current;
+	long long	input_value;
+	t_dlist		*curr_node;
 
 	i = 1;
 	if (check_algorithm(argv, state))
@@ -77,21 +95,36 @@ int	parse_input(int argc, char **argv, t_state *state)
 	}
 	while (i < argc)
 	{
-		input_value = ft_atoi(argv[i]);
-		// change atoi so it wouldnt accept input like 25cds
-		if (!input_value || check_duplicates(state->stack_a->head, input_value))
-		{
-			//ERROR
-			return (1);
-		}
-		curr_node = create_node(input_value);
-		if (!curr_node)
+		arguments = ft_split(argv[i], ' ');
+		if (!arguments)
 		{
 			free_state(&state);
-			// ERROR
+			write(2, "Error\n", 6);
 			return (1);
 		}
-		lst_add_back(curr_node, &(state->stack_a->head), &(state->stack_a->tail));
+		current = arguments;
+		while (*current)
+		{
+			input_value = ft_atoi(*current);
+			// change atoi so it wouldnt accept input like 25cds
+			if (input_value < INT_MIN || input_value > INT_MAX || check_duplicates(state->stack_a->head, input_value))
+			{
+				free_split(arguments);
+				write(2, "Error\n", 6);
+				return (1);
+			}
+			curr_node = create_node(input_value);
+			if (!curr_node)
+			{
+				free_split(arguments);
+				free_state(&state);
+				write(2, "Error\n", 6);
+				return (1);
+			}
+			lst_add_back(curr_node, &(state->stack_a->head), &(state->stack_a->tail));
+			current++;
+		}
+		free_split(arguments);
 		i++;
 	}
 	return (0);
