@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   help_search_func.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:20:46 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/17 16:53:01 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/17 21:59:55 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,23 @@ size_t	check_if_swap(t_dlist *head)
 	if (head->value > head->next->value)
 		return (1);
 	return (0);
+}
+
+size_t	check_if_sorted(t_dlist *head)
+{
+	t_dlist	*next;
+	t_dlist	*last;
+
+	head->next = next;
+	next->value = 2;
+	next->next = last;
+	if ((head->value < next->value) && (next->value < last->value))
+	{
+		write(1, "OK", 2);
+		return (1);
+	}
+	else
+		return (0);
 }
 
 size_t	list_size(t_dlist *head)
