@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 03:25:52 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/17 21:49:17 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/18 00:51:18 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@
 // This will make our program more efficient and faster for small stacks.
 
 #include "push_swap.h"
+
+void	check_small_stack(t_dlist *head)
+{
+	
+
+}
+
 
 void	small_stack(t_state *state)
 {
@@ -35,7 +42,7 @@ void	small_stack(t_state *state)
 	if (size_of_stack_a == 3)
 	{
 		if (check_if_sorted(state->stack_a->head))
-			return ;
+			return ; // just return do not display anything, right?
 		check_small_stack(state->stack_a->head);
 		return ;
 	}

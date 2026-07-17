@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:20:46 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/17 21:59:55 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/18 00:19:36 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,22 @@ size_t	check_if_swap(t_dlist *head)
 		return (1);
 	return (0);
 }
-
+// Checks if the small 3 stack is sorted 
+// If sorted or has 0 or 1 elem, returns 1, if not sorted returns 0
 size_t	check_if_sorted(t_dlist *head)
 {
-	t_dlist	*next;
-	t_dlist	*last;
+	t_dlist	*curr;
 
-	head->next = next;
-	next->value = 2;
-	next->next = last;
-	if ((head->value < next->value) && (next->value < last->value))
-	{
-		write(1, "OK", 2);
+	if (!head || !head->next)
 		return (1);
+	curr = head;
+	while (curr->next)
+	{
+		if (curr->value > curr->next->value)
+			return (0);
+		curr = curr->next;
 	}
-	else
-		return (0);
+	return (1);
 }
 
 size_t	list_size(t_dlist *head)

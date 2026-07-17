@@ -1,6 +1,6 @@
 // #include <stdio.h>
-
+// #include <limits.h>
 // int main() {
-//     printf("O(n\xE2\x88\x9A n)\n");
+//     printf("%d",CHAR_BIT);
 //     return 0;
 // }

@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:30:31 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/17 21:51:51 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/18 00:50:36 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,8 @@ size_t		idx_of_min(t_dlist *stack);
 size_t		list_size(t_dlist *head);
 size_t		check_if_swap(t_dlist *head);
 size_t		check_if_sorted(t_dlist *head);
+void		check_small_stack(t_state *state);
+
 void		pa(t_state *state, int counter);
 void		pb(t_state *state, int counter);
 void		ra(t_state *state, int counter);
