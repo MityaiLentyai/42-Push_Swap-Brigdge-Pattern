@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:23:40 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/16 13:38:17 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/17 18:09:29 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	sb(t_state *state)
 	if (state->stack_b->head->value > state->stack_b->head->next->value)
 	{
 		swap_two_first(&state->stack_b->head, &state->stack_b->tail);
-		write(1, "SA\n", 3);
+		write(1, "SB\n", 3);
 		state->benchmark->sb++;
 	}
 }

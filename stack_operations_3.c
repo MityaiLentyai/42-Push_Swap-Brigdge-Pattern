@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_operations_3.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:54:49 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/17 17:03:30 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/17 18:33:47 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,31 @@
 
 void	rr(t_state *state, int counter)
 {
-	if (!state || !state->benchmark || !(state->stack_a))
+	t_dlist	*tmp;
+	int		temp_counter;
+
+	if (!state || !state->benchmark || !(state->stack_a) || !(state->stack_b))
 		return ;
-	if (!state || !state->benchmark || !(state->stack_b))
-		return ;
-	ra(state, counter);
-	rb(state, counter);
+	temp_counter = counter;
+	while (temp_counter-- > 0)
+	{
+		tmp = lst_release_front(&state->stack_a->head,
+			&state->stack_a->tail);
+		if (!tmp)
+			return ;
+		lst_add_back(tmp, &state->stack_a->head, &state->stack_a->tail);
+	}
+	temp_counter = counter;
+	while (temp_counter-- > 0)
+	{
+		tmp = lst_release_front(&state->stack_b->head,
+			&state->stack_b->tail);
+		if (!tmp)
+			return ;
+		lst_add_back(tmp, &state->stack_b->head, &state->stack_b->tail);
+	}
+	state->benchmark->rra++;
+	write(1, "RR\n", 4);
 }
 
 // SS - SA and SB at the same time.
@@ -29,8 +48,8 @@ void	rr(t_state *state, int counter)
 void	ss(t_state *state)
 {
 	if (!state || !state->benchmark
-		|| !(state->stack_b) || !(state->stack_a))
-		return ;
+			|| !(state->stack_b) || !(state->stack_a))
+	return ;
 	if (state->stack_a->head == state->stack_a->tail)
 		return ;
 	if (state->stack_b->head == state->stack_b->tail)
@@ -45,10 +64,27 @@ void	ss(t_state *state)
 
 void	rrr(t_state *state, int counter)
 {
-	if (!state || !state->benchmark || !(state->stack_a))
+	t_dlist	*tmp;
+	int		temp_counter;
+
+	temp_counter = counter;
+	if (!state || !state->benchmark || !(state->stack_a) || !(state->stack_b))
 		return ;
-	if (!state || !state->benchmark || !(state->stack_b))
-		return ;
-	rra(state, counter);
-	rrb(state, counter);
+	while (temp_counter-- > 0)
+	{
+		tmp = lst_release_back(&state->stack_a->head, &state->stack_a->tail);
+		if (!tmp)
+			return ;
+		lst_add_front(tmp, &state->stack_a->head, &state->stack_a->tail);
+	}
+	temp_counter = counter;
+	while (temp_counter-- > 0)
+	{
+		tmp = lst_release_back(&state->stack_b->head, &state->stack_b->tail);
+		if (!tmp)
+			return ;
+		lst_add_front(tmp, &state->stack_b->head, &state->stack_b->tail);
+	}
+	write(1, "RRR\n", 4);
+	state->benchmark->rrr++;
 }
