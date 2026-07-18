@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 11:33:35 by nsuszano          #+#    #+#             */
-/*   Updated: 2026/07/17 18:05:00 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/19 00:44:29 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ long long	ft_atoi(const char *nptr)
 		nptr++;
 	}
 	if (*nptr != '\0')
-		return LONG_MAX;
+		return (LONG_MAX);
 	if (!minus)
 		number = -number;
 	return (number);

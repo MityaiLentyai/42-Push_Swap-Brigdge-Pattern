@@ -53,6 +53,7 @@ void	pb(t_state *state, int counter)
 		counter--;
 	}
 }
+
 // Rotate A: Shift up all elements of stack a by one.
 // The first element becomes the last one.
 void	ra(t_state *state, int counter)

@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 15:05:13 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/10 18:43:03 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/19 00:46:14 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ double	compute_disorder(t_stack *stack)
 	}
 	if (total_pairs)
 		return ((double) mistakes / (double) total_pairs);
-	else return (0);
+	return (0);
 }

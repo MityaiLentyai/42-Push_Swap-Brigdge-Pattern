@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 03:25:52 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/18 16:54:42 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/19 00:51:48 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	sort_three(t_state *state, t_dlist *head)
 	}
 }
 
-static void	check_small_stack(t_state state,t_dlist *head)
+static void	check_small_stack(t_state state, t_dlist *head)
 {
 	if (!head || !head->next || !head->next->next)
 		return ;

@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 03:26:58 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/18 16:43:53 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/19 00:53:07 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ static void	write_algorithm_name(int fd, t_algorithm algo)
 	if (algo == SIMPLE)
 		ft_putstr_fd("Simple / (O(n^2))", fd);
 	else if (algo == MEDIUM)
-		ft_putstr_fd("Medium / (O(n sqquare root n))", fd); // need to find a solution for printing this
+		ft_putstr_fd("Medium / (O(n sqquare root n))", fd);
 	else if (algo == COMPLEX)
 		ft_putstr_fd("Complex / (O(n log n))", fd);
 	else if (algo == ADAPTIVE)
-		ft_putstr_fd("Aadaptive / (O(n it depends n))", fd); // need to think how it will choose algo, based on disorder one of 3 previous?
+		ft_putstr_fd("Aadaptive / (O(n it depends n))", fd);
 	else
 		ft_putstr_fd("UNKNOWN", fd);
 	ft_putstr_fd("\n", fd);

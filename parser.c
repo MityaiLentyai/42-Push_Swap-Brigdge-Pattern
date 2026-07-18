@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:25:44 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/18 17:09:51 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/19 00:50:06 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,8 @@ int	parse_input(int argc, char **argv, t_state *state)
 		while (*current)
 		{
 			input_value = ft_atoi(*current);
-			// change atoi so it wouldnt accept input like 25cds
-			if (input_value < INT_MIN || input_value > INT_MAX || check_duplicates(state->stack_a->head, input_value))
+			if (input_value < INT_MIN || input_value > INT_MAX
+				||check_duplicates(state->stack_a->head, input_value))
 			{
 				free_split(arguments);
 				free_state(&state);
@@ -122,7 +122,8 @@ int	parse_input(int argc, char **argv, t_state *state)
 				write(2, "Error\n", 6);
 				return (1);
 			}
-			lst_add_back(curr_node, &(state->stack_a->head), &(state->stack_a->tail));
+			lst_add_back(curr_node, &(state->stack_a->head),
+				&(state->stack_a->tail));
 			current++;
 		}
 		free_split(arguments);

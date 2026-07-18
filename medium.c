@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   medium.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/17 14:32:35 by nsuszano          #+#    #+#             */
-/*   Updated: 2026/07/17 19:34:20 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/19 00:47:27 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	sort_int(int *tab, size_t n)
 	}
 }
 
-void list_into_array(int *list_copy, t_dlist *head)
+void	list_into_array(int *list_copy, t_dlist *head)
 {
 	size_t	idx;
 
@@ -45,20 +45,22 @@ void list_into_array(int *list_copy, t_dlist *head)
 	{
 		list_copy[idx] = head->value;
 		head = head->next;
-		idx++;	
+		idx++;
 	}
 }
 
 // 1 when malloc failed
+
 size_t	change_numbers(t_dlist *head)
 {
 	size_t	list_length;
 	int		*list_copy;
 
-	if (!head)	// but there is no such possibility that head is empty at this point of program
-		return (1);	// if so then is would already been stopped 
+	if (!head) // but there is no such possibility that head is empty at this point of program
+		return (1);
+	// if so then is would already been stopped
 	list_length = list_size(head);
-	list_copy = malloc(list_length*sizeof(int));
+	list_copy = malloc(list_length * sizeof(int));
 	if (!list_copy)
 		return (1);
 	list_into_array(list_copy, head);
@@ -69,7 +71,7 @@ size_t	change_numbers(t_dlist *head)
 		while (head->value != list_copy[list_length])
 			list_length++;
 		head->value = list_length;
-		head = head->next;	
+		head = head->next;
 	}
 	free(list_copy);
 	return (0);
@@ -77,7 +79,7 @@ size_t	change_numbers(t_dlist *head)
 
 int	chunk_size_cal(int n)
 {
-	int sqrt;
+	int	sqrt;
 
 	sqrt = 0;
 	while (sqrt * sqrt < n)
@@ -89,13 +91,15 @@ int	chunk_size_cal(int n)
 void	medium(t_state *state)
 {
 	int		chunk_size;
-	int		min_value;	// numbers changed --> from 0 to size - 1; like indexes in array
-	size_t	size_of_stack;
+	int		min_value;
 	size_t	max_idx;
+
+	// numbers changed --> from 0 to size - 1; like indexes in array
+	size_t	size_of_stack;
 
 	size_of_stack = list_size(state->stack_a->head);
 	if (size_of_stack <= 3)
-		return small_stack(state);
+		return (small_stack(state));
 	if (change_numbers(state->stack_a->head))
 		return ;
 	chunk_size = chunk_size_cal(size_of_stack);
@@ -125,7 +129,6 @@ void	medium(t_state *state)
 		else
 			rb(state, max_idx);
 		pa(state, 1);
-		size_of_stack--;	
+		size_of_stack--;
 	}
 }
-
