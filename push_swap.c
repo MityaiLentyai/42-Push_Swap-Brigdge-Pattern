@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:27:00 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/18 17:11:04 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/18 18:13:14 by nsuszano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	helper_main(t_state *state)
 	else if (state->algorithm == MEDIUM)
 		medium(state);
 	else if (state->algorithm == COMPLEX)
-		medium(state); //complex
+		complex(state); //complex
 	else if (state->algorithm == ADAPTIVE)
 	{
 		if (state->disorder < 0.2)
@@ -30,9 +30,8 @@ void	helper_main(t_state *state)
 		else if (state->disorder < 0.5)
 			medium(state);
 		else
-			medium(state);	//complex
+			complex(state);	//complex
 	}
-	medium(state);
 	call_benchmark(state);
 	free_state(&state);
 }

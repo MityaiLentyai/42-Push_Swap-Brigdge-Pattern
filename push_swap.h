@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:30:31 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/18 14:37:14 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/18 18:08:12 by nsuszano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,5 +137,9 @@ void		list_into_array(int *list_copy, t_dlist *head);
 size_t		change_numbers(t_dlist *head);
 int			chunk_size_cal(int n);
 void		medium(t_state *state);
+void		small_stack_complex(t_state *state, t_dlist *head);
+void		quick_sort_a(t_state *state, int min, int max);
+void		quick_sort_b(t_state *state, int min, int max);
+void		complex(t_state *state);
 
 #endif
