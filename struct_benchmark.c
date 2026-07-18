@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 03:26:58 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/19 00:53:07 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/19 01:01:15 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,24 @@ static void	write_double(int fd, double value)
 	ft_putstr_fd("%\n", fd);
 }
 
-static void	write_algorithm_name(int fd, t_algorithm algo)
+static void	write_algorithm_name(int fd, t_algorithm algo, double disorder)
 {
 	ft_putstr_fd("[bench] strategy: ", fd);
 	if (algo == SIMPLE)
 		ft_putstr_fd("Simple / (O(n^2))", fd);
 	else if (algo == MEDIUM)
-		ft_putstr_fd("Medium / (O(n sqquare root n))", fd);
+		ft_putstr_fd("Medium / (O(\u221An))", fd);
 	else if (algo == COMPLEX)
 		ft_putstr_fd("Complex / (O(n log n))", fd);
 	else if (algo == ADAPTIVE)
-		ft_putstr_fd("Aadaptive / (O(n it depends n))", fd);
+	{
+		if (disorder < 0.2)
+			ft_putstr_fd("Adaptive / (O(n^2))", fd);
+		else if (disorder >= 0.2 && disorder < 0.5)
+			ft_putstr_fd("Adaptive / (O(\u221An))", fd);
+		else if (disorder >= 0.5)
+			ft_putstr_fd("Adaptive / (O(log n))", fd);
+	}
 	else
 		ft_putstr_fd("UNKNOWN", fd);
 	ft_putstr_fd("\n", fd);
@@ -115,7 +122,7 @@ void	call_benchmark(t_state *state)
 	if (!state || !state->benchmark || !state->benchmark->to_print)
 		return ;
 	write_double(2, state->disorder);
-	write_algorithm_name(2, state->algorithm);
+	write_algorithm_name(2, state->algorithm, state->disorder);
 	write_total_operations(2, state->benchmark);
 	write_operation_counts(2, state->benchmark);
 }
