@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:25:44 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/17 18:34:49 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/18 17:09:51 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ int	parse_input(int argc, char **argv, t_state *state)
 			if (input_value < INT_MIN || input_value > INT_MAX || check_duplicates(state->stack_a->head, input_value))
 			{
 				free_split(arguments);
+				free_state(&state);
 				write(2, "Error\n", 6);
 				return (1);
 			}

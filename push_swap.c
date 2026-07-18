@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:27:00 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/18 16:41:47 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/18 17:11:04 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 void	helper_main(t_state *state)
 {
 	state->disorder = compute_disorder(state->stack_a);
+	if (state->disorder == 0)
+		return ;
 	if (state->algorithm == SIMPLE)
 		simple(state);
 	else if (state->algorithm == MEDIUM)
