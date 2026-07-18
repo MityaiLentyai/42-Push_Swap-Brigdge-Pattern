@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 03:25:52 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/18 14:39:40 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/18 16:54:42 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,40 +19,38 @@
 
 #include "push_swap.h"
 
-static void	sort_three(t_state *state, t_dlist **head)
+static void	sort_three(t_state *state, t_dlist *head)
 {
-	if ((*head)->value > (*head)->next->value
-		&& (*head)->next->value < (*head)->next->next->value
-		&& (*head)->value < (*head)->next->next->value)
+	if (head->value > head->next->value
+		&& head->next->value < head->next->next->value
+		&& head->value < head->next->next->value)
 		sa(state);
-	else if ((*head)->value > (*head)->next->value
-		&& (*head)->next->value < (*head)->next->next->value
-		&& (*head)->value > (*head)->next->next->value)
+	else if (head->value > head->next->value
+		&& head->next->value < head->next->next->value
+		&& head->value > head->next->next->value)
 		ra(state, 1);
-	else if ((*head)->value < (*head)->next->value
-		&& (*head)->next->value > (*head)->next->next->value
-		&& (*head)->value < (*head)->next->next->value)
+	else if (head->value < head->next->value
+		&& head->next->value > head->next->next->value
+		&& head->value < head->next->next->value)
 	{
 		rra(state, 1);
 		sa(state);
 	}
-	else if ((*head)->value < (*head)->next->value
-		&& (*head)->next->value > (*head)->next->next->value
-		&& (*head)->value > (*head)->next->next->value)
+	else if (head->value < head->next->value
+		&& head->next->value > head->next->next->value
+		&& head->value > head->next->next->value)
 		rra(state, 1);
 	else
 	{
 		sa(state);
 		rra(state, 1);
 	}
-	*head = state->stack_a->head;
 }
 
-static void	check_small_stack(t_state state,t_dlist **head)
+static void	check_small_stack(t_state state,t_dlist *head)
 {
-	if (!head || !*head || !(*head)->next || !(*head)->next->next)
+	if (!head || !head->next || !head->next->next)
 		return ;
-	// init_stack_state(&state, head);
 	sort_three(&state, head);
 }
 
@@ -72,8 +70,8 @@ void	small_stack(t_state *state)
 	if (size_of_stack_a == 3)
 	{
 		if (check_if_sorted(state->stack_a->head))
-			return ;// just return do not display anything, right?
-		check_small_stack(*state, &state->stack_a->head);
+			return ;
+		check_small_stack(*state, state->stack_a->head);
 		return ;
 	}
 }

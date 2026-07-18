@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 03:26:58 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/10 18:32:24 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/18 16:43:53 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static void	write_operation_counts(int fd, t_benchmark *bench)
 	ft_putstr_fd("[bench]", fd);
 	ft_putstr_fd(" sa: ", fd);
 	ft_putnbr_fd(bench->sa, fd);
-	ft_putstr_fd("sb: ", fd);
+	ft_putstr_fd(" sb: ", fd);
 	ft_putnbr_fd(bench->sb, fd);
 	ft_putstr_fd("  ss: ", fd);
 	ft_putnbr_fd(bench->ss, fd);

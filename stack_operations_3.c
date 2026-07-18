@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:54:49 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/17 21:13:29 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/18 16:46:14 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	rr(t_state *state, int counter)
 		lst_add_back(tmp, &state->stack_b->head, &state->stack_b->tail);
 	}
 	state->benchmark->rr++;
-	write(1, "RR\n", 4);
+	write(1, "rr\n", 4);
 }
 
 // SS: SA and SB at the same time.
@@ -50,7 +50,7 @@ void	ss(t_state *state)
 		return ;
 	swap_two_first(&state->stack_a->head, &state->stack_a->tail);
 	swap_two_first(&state->stack_b->head, &state->stack_b->tail);
-	write(1, "SS\n", 3);
+	write(1, "ss\n", 3);
 	state->benchmark->ss++;
 }
 
@@ -78,6 +78,6 @@ void	rrr(t_state *state, int counter)
 			return ;
 		lst_add_front(tmp, &state->stack_b->head, &state->stack_b->tail);
 	}
-	write(1, "RRR\n", 4);
+	write(1, "rrr\n", 4);
 	state->benchmark->rrr++;
 }

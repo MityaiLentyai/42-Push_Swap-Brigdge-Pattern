@@ -27,7 +27,7 @@ void	pa(t_state *state, int counter)
 		if (!tmp)
 			return ;
 		lst_add_front(tmp, &state->stack_a->head, &state->stack_a->tail);
-		write(1, "PA\n", 3);
+		write(1, "pa\n", 3);
 		state->benchmark->pa++;
 		counter--;
 	}
@@ -48,7 +48,7 @@ void	pb(t_state *state, int counter)
 		if (!tmp)
 			return ;
 		lst_add_front(tmp, &state->stack_b->head, &state->stack_b->tail);
-		write(1, "PB\n", 3);
+		write(1, "pb\n", 3);
 		state->benchmark->pb++;
 		counter--;
 	}
@@ -68,7 +68,7 @@ void	ra(t_state *state, int counter)
 		if (!tmp)
 			return ;
 		lst_add_back(tmp, &state->stack_a->head, &state->stack_a->tail);
-		write(1, "RA\n", 3);
+		write(1, "ra\n", 3);
 		state->benchmark->ra++;
 		counter--;
 	}
@@ -88,7 +88,7 @@ void	rra(t_state *state, int counter)
 		if (!tmp)
 			return ;
 		lst_add_front(tmp, &state->stack_a->head, &state->stack_a->tail);
-		write(1, "RRA\n", 4);
+		write(1, "rra\n", 4);
 		state->benchmark->rra++;
 		counter--;
 	}

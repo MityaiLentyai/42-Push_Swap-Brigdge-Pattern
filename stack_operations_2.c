@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:23:40 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/17 21:23:57 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/18 16:45:53 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	sa(t_state *state)
 	if (!state->stack_a->head || !state->stack_a->head->next)
 		return ;
 	swap_two_first(&state->stack_a->head, &state->stack_a->tail);
-	write(1, "SA\n", 3);
+	write(1, "sa\n", 3);
 	state->benchmark->sa++;
 }
 
@@ -34,7 +34,7 @@ void	sb(t_state *state)
 	if (!state->stack_b->head || !state->stack_b->head->next)
 		return ;
 	swap_two_first(&state->stack_b->head, &state->stack_b->tail);
-	write(1, "SB\n", 3);
+	write(1, "sb\n", 3);
 	state->benchmark->sb++;
 }
 
@@ -53,7 +53,7 @@ void	rb(t_state *state, int counter)
 		if (!tmp)
 			return ;
 		lst_add_back(tmp, &state->stack_b->head, &state->stack_b->tail);
-		write(1, "RB\n", 3);
+		write(1, "rb\n", 3);
 		state->benchmark->rb++;
 		counter--;
 	}
@@ -73,7 +73,7 @@ void	rrb(t_state *state, int counter)
 		if (!tmp)
 			return ;
 		lst_add_front(tmp, &state->stack_b->head, &state->stack_b->tail);
-		write(1, "RRB\n", 4);
+		write(1, "rrb\n", 4);
 		state->benchmark->rrb++;
 		counter--;
 	}

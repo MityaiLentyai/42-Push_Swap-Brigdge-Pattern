@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:27:00 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/17 19:42:36 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/18 16:41:47 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,6 @@
 
 void	helper_main(t_state *state)
 {
-	t_dlist	*current;
-
-	current = state->stack_a->head;
-	while (current)
-	{
-		printf("%d\n", current->value);
-		current = current->next;
-	}
 	state->disorder = compute_disorder(state->stack_a);
 	if (state->algorithm == SIMPLE)
 		simple(state);
@@ -38,15 +30,7 @@ void	helper_main(t_state *state)
 		else
 			medium(state);	//complex
 	}
-	printf("Disorder: %.2f\n", state->disorder);
 	medium(state);
-	printf("After:\n");
-	current = state->stack_a->head;
-	while (current)
-	{
-		printf("%d\n", current->value);
-		current = current->next;
-	}
 	call_benchmark(state);
 	free_state(&state);
 }
@@ -63,7 +47,6 @@ int	main(int argc, char **argv)
 		if (!state || parse_input(argc, argv, state))
 			return (0);
 	}
-	printf("Before:\n");
 	helper_main(state);
 	return (0);
 }
