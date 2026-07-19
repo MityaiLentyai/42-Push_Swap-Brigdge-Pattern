@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:25:44 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/19 00:50:06 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/19 19:51:08 by nsuszano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ int	parse_input(int argc, char **argv, t_state *state)
 		state->benchmark->to_print = 1;
 		i++;
 	}
+	if (i >= argc)
+		return (1);
 	while (i < argc)
 	{
 		arguments = ft_split(argv[i], ' ');

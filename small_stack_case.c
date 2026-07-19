@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 03:25:52 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/19 21:01:29 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/19 21:50:54 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,6 @@ static void	check_small_stack(t_state *state, t_dlist *head)
 {
 	size_t const	size_of_stack_a = list_size(head);
 
-	if (!head || !head->next || !head->next->next)
-		return ;
 	if (size_of_stack_a == 3)
 		sort_three(state, head);
 	if (size_of_stack_a > 3 && size_of_stack_a <= 5)
