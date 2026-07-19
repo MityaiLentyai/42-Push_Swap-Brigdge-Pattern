@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 03:25:52 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/19 12:51:55 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/19 14:43:50 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,18 @@ static void	sort_three(t_state *state, t_dlist *head)
 static void sort_five(t_state *state)
 {
 	size_t	stack_size; 
-	size_t	temp_idx;
+	size_t	min_idx;
 	int	counter;
 	
 	counter = 0;
 	stack_size = list_size(state->stack_a->head);
 	while (stack_size-- > 3)
 	{
-		temp_idx = idx_of_min(state->stack_a->head);
-		if (temp_idx > stack_size / 2)
-			rra(state, stack_size - temp_idx);
+		min_idx = idx_of_min(state->stack_a->head);
+		if (min_idx > (stack_size - 1) / 2)
+			rra(state, stack_size - min_idx);
 		else
-			ra(state, temp_idx);
+			ra(state, min_idx);
 		pb(state, 1);
 		counter++;
 	}
