@@ -50,7 +50,7 @@ for ((i=1; i<=EDGE_TESTS; i++)); do
     
     OPS=$(./push_swap $ARG 2>/dev/null)
     OP_COUNT=$(echo "$OPS" | grep -v '^$' | wc -l)
-    CHECKER_RESULT=$(echo "$OPS" | ./checker_linux $ARG 2>/dev/null)
+    CHECKER_RESULT=$(./push_swap $ARG 2>/dev/null | ./checker_linux $ARG 2>/dev/null)
     
     # Special rule: If size is 0, push_swap shouldn't output anything, checker handles it safely
     if [ "$CHECKER_RESULT" == "OK" ] || { [ -z "$ARG" ] && [ -z "$OPS" ]; }; then
@@ -106,7 +106,11 @@ for strategy in "${STRATEGIES[@]}"; do
         fi
         
         OP_COUNT=$(echo "$OPS" | grep -v '^$' | wc -l)
-        CHECKER_RESULT=$(echo "$OPS" | ./checker_linux $ARG 2>/dev/null)
+        if [ -z "$strategy" ]; then
+            CHECKER_RESULT=$(./push_swap $ARG 2>/dev/null | ./checker_linux $ARG 2>/dev/null)
+        else
+            CHECKER_RESULT=$(./push_swap $strategy $ARG 2>/dev/null | ./checker_linux $ARG 2>/dev/null)
+        fi
         
         if [ "$CHECKER_RESULT" == "OK" ]; then
             echo -e "  [Test $i/$SMALL_TESTS_PER_STRATEGY] Size $SIZE: \033[0;32mOK\033[0m ($OP_COUNT ops)"
@@ -144,7 +148,7 @@ for ((i=1; i<=LARGE_TESTS; i++)); do
     
     OPS=$(./push_swap $ARG 2>/dev/null)
     OP_COUNT=$(echo "$OPS" | grep -v '^$' | wc -l)
-    CHECKER_RESULT=$(echo "$OPS" | ./checker_linux $ARG 2>/dev/null)
+    CHECKER_RESULT=$(./push_swap $ARG 2>/dev/null | ./checker_linux $ARG 2>/dev/null)
     
     if [ "$CHECKER_RESULT" == "OK" ]; then
         ((large_passed++))
@@ -189,7 +193,7 @@ for ((i=1; i<=MEDIUM_LARGE_TESTS; i++)); do
     
     OPS=$(./push_swap $ARG 2>/dev/null)
     OP_COUNT=$(echo "$OPS" | grep -v '^$' | wc -l)
-    CHECKER_RESULT=$(echo "$OPS" | ./checker_linux $ARG 2>/dev/null)
+    CHECKER_RESULT=$(./push_swap $ARG 2>/dev/null | ./checker_linux $ARG 2>/dev/null)
     
     if [ "$CHECKER_RESULT" == "OK" ]; then
         ((ml_passed++))

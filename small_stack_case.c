@@ -6,11 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 03:25:52 by dzzayats          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2026/07/19 14:43:50 by dzzayats         ###   ########.fr       */
-=======
-/*   Updated: 2026/07/19 15:10:31 by dzzayats         ###   ########.fr       */
->>>>>>> origin/Debug_and_Build
+/*   Updated: 2026/07/19 15:17:25 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
