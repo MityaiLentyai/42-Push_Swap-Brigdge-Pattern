@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/17 14:32:35 by nsuszano          #+#    #+#             */
-/*   Updated: 2026/07/19 00:47:27 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/19 11:56:37 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	list_into_array(int *list_copy, t_dlist *head)
 }
 
 // 1 when malloc failed
-
 size_t	change_numbers(t_dlist *head)
 {
 	size_t	list_length;
@@ -98,7 +97,7 @@ void	medium(t_state *state)
 	size_t	size_of_stack;
 
 	size_of_stack = list_size(state->stack_a->head);
-	if (size_of_stack <= 3)
+	if (size_of_stack <= 5)
 		return (small_stack(state));
 	if (change_numbers(state->stack_a->head))
 		return ;

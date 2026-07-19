@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 03:25:52 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/19 00:51:48 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/19 12:51:55 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,36 @@ static void	sort_three(t_state *state, t_dlist *head)
 	}
 }
 
-static void	check_small_stack(t_state state, t_dlist *head)
+static void sort_five(t_state *state)
 {
+	size_t	stack_size; 
+	size_t	temp_idx;
+	int	counter;
+	
+	counter = 0;
+	stack_size = list_size(state->stack_a->head);
+	while (stack_size-- > 3)
+	{
+		temp_idx = idx_of_min(state->stack_a->head);
+		if (temp_idx > stack_size / 2)
+			rra(state, stack_size - temp_idx);
+		else
+			ra(state, temp_idx);
+		pb(state, 1);
+		counter++;
+	}
+	sort_three(state,state->stack_a->head);
+	pa(state,counter);
+}
+static void	check_small_stack(t_state *state, t_dlist *head)
+{
+	size_t const	size_of_stack_a = list_size(head);
 	if (!head || !head->next || !head->next->next)
 		return ;
-	sort_three(&state, head);
+	if (size_of_stack_a == 3)
+		sort_three(state, head);
+	if (size_of_stack_a > 3 && size_of_stack_a <= 5)
+		sort_five(state);
 }
 
 void	small_stack(t_state *state)
@@ -67,11 +92,11 @@ void	small_stack(t_state *state)
 			sa(state);
 		return ;
 	}
-	if (size_of_stack_a == 3)
+	if (size_of_stack_a >= 3 && size_of_stack_a <= 5)
 	{
 		if (check_if_sorted(state->stack_a->head))
 			return ;
-		check_small_stack(*state, state->stack_a->head);
+		check_small_stack(state, state->stack_a->head);
 		return ;
 	}
 }

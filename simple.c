@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 03:28:09 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/19 00:51:34 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/19 11:16:01 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	simple(t_state *state)
 	size_t	min_idx;
 
 	stack_size = list_size(state->stack_a->head);
-	while (stack_size > 3)
+	while (stack_size > 5)
 	{
 		min_idx = idx_of_min(state->stack_a->head);
 		if (min_idx > (stack_size - 1) / 2)
