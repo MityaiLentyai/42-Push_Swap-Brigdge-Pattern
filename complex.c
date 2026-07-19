@@ -6,7 +6,7 @@
 /*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 17:29:27 by username          #+#    #+#             */
-/*   Updated: 2026/07/19 14:38:46 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/19 20:17:44 by nsuszano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ void	small_stack_complex_b(t_state *state, int size_of_stack)
 	else if (size_of_stack == 3)
 	{
 		pa(state, 3);
-		sort_three_complex_a(state);
-		return ;
+		small_stack_complex_a(state, 3);
 	}
 }
 
@@ -60,10 +59,11 @@ void	small_stack_complex_a(t_state *state, int size_of_stack)
 	}
 	if (size_of_stack == 3)
 	{
-		if (check_if_sorted(state->stack_a->head))
+		if (state->stack_a->head->value < state->stack_a->head->next->value
+		&& state->stack_a->head->next->value < state->stack_a->head->next->next->value
+		&& state->stack_a->head->value < state->stack_a->head->next->next->value)
 			return ;
 		sort_three_complex_a(state);
-		return ;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:30:31 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/19 17:56:11 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/19 20:20:24 by nsuszano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,7 @@ t_dlist	*find_rb(t_dlist *start);
 t_dlist	*find_ra(t_dlist *start);
 t_dlist	*find_rrb(t_dlist *start);
 t_dlist	*find_rra(t_dlist *start);
+void	from_a_to_b(t_state *state, int min_value, int chunk_size);
 
 
 #endif

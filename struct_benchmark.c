@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_benchmark.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 03:26:58 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/19 01:01:15 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/19 19:42:53 by nsuszano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	write_algorithm_name(int fd, t_algorithm algo, double disorder)
 	if (algo == SIMPLE)
 		ft_putstr_fd("Simple / (O(n^2))", fd);
 	else if (algo == MEDIUM)
-		ft_putstr_fd("Medium / (O(\u221An))", fd);
+		ft_putstr_fd("Medium / (O(n \u221An))", fd);
 	else if (algo == COMPLEX)
 		ft_putstr_fd("Complex / (O(n log n))", fd);
 	else if (algo == ADAPTIVE)
@@ -68,9 +68,9 @@ static void	write_algorithm_name(int fd, t_algorithm algo, double disorder)
 		if (disorder < 0.2)
 			ft_putstr_fd("Adaptive / (O(n^2))", fd);
 		else if (disorder >= 0.2 && disorder < 0.5)
-			ft_putstr_fd("Adaptive / (O(\u221An))", fd);
+			ft_putstr_fd("Adaptive / (O(n \u221An))", fd);
 		else if (disorder >= 0.5)
-			ft_putstr_fd("Adaptive / (O(log n))", fd);
+			ft_putstr_fd("Adaptive / (O(n log n))", fd);
 	}
 	else
 		ft_putstr_fd("UNKNOWN", fd);
