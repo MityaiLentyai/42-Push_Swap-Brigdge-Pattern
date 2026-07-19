@@ -6,16 +6,13 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 03:25:52 by dzzayats          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/07/19 14:43:50 by dzzayats         ###   ########.fr       */
+=======
+/*   Updated: 2026/07/19 15:10:31 by dzzayats         ###   ########.fr       */
+>>>>>>> origin/Debug_and_Build
 /*                                                                            */
 /* ************************************************************************** */
-
-// Small stack case handling - up to 5 elements
-
-// We gotta check if our algorithms are working properly for small stacks.
-// We can use a different approach for small stacks,
-// as we can hardcode the solutions for 2, 3, 4, and 5 elements.
-// This will make our program more efficient and faster for small stacks.
 
 #include "push_swap.h"
 
@@ -47,30 +44,39 @@ static void	sort_three(t_state *state, t_dlist *head)
 	}
 }
 
-static void sort_five(t_state *state)
+static void	sort_five(t_state *state)
 {
-	size_t	stack_size; 
+	size_t	current_size;
 	size_t	min_idx;
-	int	counter;
-	
-	counter = 0;
-	stack_size = list_size(state->stack_a->head);
-	while (stack_size-- > 3)
+
+	while (1)
 	{
+		current_size = list_size(state->stack_a->head);
+		if (current_size <= 3)
+			break ;
 		min_idx = idx_of_min(state->stack_a->head);
-		if (min_idx > (stack_size - 1) / 2)
-			rra(state, stack_size - min_idx);
+		if (min_idx <= current_size / 2)
+		{
+			while (min_idx--)
+				ra(state, 1);
+		}
 		else
-			ra(state, min_idx);
+		{
+			while (min_idx++ < current_size)
+				rra(state, 1);
+		}
 		pb(state, 1);
-		counter++;
 	}
-	sort_three(state,state->stack_a->head);
-	pa(state,counter);
+	sort_three(state, state->stack_a->head);
+	while (state->stack_b && state->stack_b->head)
+		pa(state, 1);
 }
+
+
 static void	check_small_stack(t_state *state, t_dlist *head)
 {
 	size_t const	size_of_stack_a = list_size(head);
+
 	if (!head || !head->next || !head->next->next)
 		return ;
 	if (size_of_stack_a == 3)
@@ -97,6 +103,5 @@ void	small_stack(t_state *state)
 		if (check_if_sorted(state->stack_a->head))
 			return ;
 		check_small_stack(state, state->stack_a->head);
-		return ;
 	}
 }
