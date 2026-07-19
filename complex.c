@@ -6,30 +6,26 @@
 /*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 17:29:27 by username          #+#    #+#             */
-/*   Updated: 2026/07/18 19:16:06 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/19 14:38:46 by nsuszano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	small_stack_complex_b(t_state *state)
+void	small_stack_complex_b(t_state *state, int size_of_stack)
 {
-	size_t	size_of_stack;
-
-	size_of_stack = list_size(state->stack_b->head);
 	if (size_of_stack == 1)
-		return ;
-	if (size_of_stack == 2)
+		pa(state, 1);
+	else if (size_of_stack == 2)
 	{
-		if (check_if_swap(state->stack_b->head))
+		if (!check_if_swap(state->stack_b->head))
 			sb(state);
-		return ;
+		pa(state, 2);
 	}
-	if (size_of_stack == 3)
+	else if (size_of_stack == 3)
 	{
-		if (check_if_sorted(state->stack_b->head))
-			return ;
-		sort_three_complex_b(state);
+		pa(state, 3);
+		sort_three_complex_a(state);
 		return ;
 	}
 }
@@ -39,7 +35,7 @@ void	sort_three_complex_b(t_state *state)
 	if (state->stack_b->head->value > state->stack_b->head->next->value
 		&& state->stack_b->head->next->value < state->stack_b->head->next->next->value
 		&& state->stack_b->head->value < state->stack_b->head->next->next->value)
-		sa(state);
+		sb(state);
 	else
 	{
 		if (state->stack_b->head->value > state->stack_b->head->next->value)
@@ -52,11 +48,8 @@ void	sort_three_complex_b(t_state *state)
 	}
 }
 
-void	small_stack_complex_a(t_state *state)
+void	small_stack_complex_a(t_state *state, int size_of_stack)
 {
-	size_t	size_of_stack;
-
-	size_of_stack = list_size(state->stack_a->head);
 	if (size_of_stack == 1)
 		return ;
 	if (size_of_stack == 2)
@@ -100,7 +93,7 @@ void	quick_sort_a(t_state *state, int min, int max)
 
 	if (max - min + 1 <= 3)
 	{
-		small_stack_complex_a(state);
+		small_stack_complex_a(state, max - min + 1);
 		return ;
 	}
 	median = (max + min) / 2;
@@ -119,7 +112,8 @@ void	quick_sort_a(t_state *state, int min, int max)
 			numbers_to_rotate++;
 		}
 	}
-	rra(state, numbers_to_rotate);
+	if (numbers_to_rotate != (int)list_size(state->stack_a->head))
+		rra(state, numbers_to_rotate);
 	quick_sort_a(state, median + 1, max);
 	quick_sort_b(state, min, median);
 }
@@ -132,7 +126,7 @@ void	quick_sort_b(t_state *state, int min, int max)
 
 	if (max - min + 1 <= 3)
 	{
-		small_stack_complex_b(state);
+		small_stack_complex_b(state, max - min + 1);
 		return ;
 	}
 	median = (max + min) / 2;
@@ -151,7 +145,8 @@ void	quick_sort_b(t_state *state, int min, int max)
 			numbers_to_rotate++;
 		}
 	}
-	rrb(state, numbers_to_rotate);
+	if (numbers_to_rotate != (int)list_size(state->stack_b->head))
+		rrb(state, numbers_to_rotate);
 	quick_sort_a(state, median + 1, max);
 	quick_sort_b(state, min, median);
 }
