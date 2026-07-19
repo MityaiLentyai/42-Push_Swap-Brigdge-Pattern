@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Configuration
-SMALL_TESTS_PER_STRATEGY=250
+SMALL_TESTS_PER_STRATEGY= 250
 STRATEGIES=("--simple" "--medium" "--complex" "")
-LARGE_TESTS=1400
-LARGE_SIZE=100
+LARGE_TESTS=2500
+LARGE_SIZE=500
 
 # New Configuration Blocks
-EDGE_TESTS=1
-MEDIUM_LARGE_TESTS=1
+EDGE_TESTS=500
+MEDIUM_LARGE_TESTS=2500
 
 TOTAL_PASSED=0
 TOTAL_FAILED=0
@@ -154,11 +154,27 @@ for ((i=1; i<=LARGE_TESTS; i++)); do
         ((large_passed++))
         ((TOTAL_PASSED++))
         
-        if [ $OP_COUNT -le 700 ]; then PERF_RATING="\033[0;32mExcellent\033[0m"
-        elif [ $OP_COUNT -le 1500 ]; then PERF_RATING="\033[0;36mGood\033[0m"
-        elif [ $OP_COUNT -le 2000 ]; then PERF_RATING="\033[0;33mPass\033[0m"
-        else PERF_RATING="\033[0;31mFail (Too many ops)\033[0m"; fi
-        
+    if [ "$LARGE_SIZE" -gt 400 ]; then
+        if [ "$OP_COUNT" -le 5500 ]; then
+            PERF_RATING="\033[0;32mExcellent\033[0m"
+        elif [ "$OP_COUNT" -le 8000 ]; then
+            PERF_RATING="\033[0;36mGood\033[0m"
+        elif [ "$OP_COUNT" -le 12000 ]; then
+            PERF_RATING="\033[0;33mPass\033[0m"
+        else
+            PERF_RATING="\033[0;31mFail (Too many ops)\033[0m"
+        fi
+    else
+        if [ "$OP_COUNT" -le 700 ]; then
+            PERF_RATING="\033[0;32mExcellent\033[0m"
+        elif [ "$OP_COUNT" -le 1500 ]; then
+            PERF_RATING="\033[0;36mGood\033[0m"
+        elif [ "$OP_COUNT" -le 2000 ]; then
+            PERF_RATING="\033[0;33mPass\033[0m"
+        else
+            PERF_RATING="\033[0;31mFail (Too many ops)\033[0m"
+        fi
+    fi
         echo -e "  [Large Test $i/$LARGE_TESTS]: \033[0;32mOK\033[0m ($OP_COUNT ops) -> $PERF_RATING"
     else
         echo -e "  [Large Test $i/$LARGE_TESTS]: \033[0;31mKO / Error\033[0m -> ARG=\"$ARG\""
