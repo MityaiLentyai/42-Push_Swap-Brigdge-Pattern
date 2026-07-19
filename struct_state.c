@@ -6,7 +6,7 @@
 /*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 03:27:32 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/10 12:22:38 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/19 19:22:31 by nsuszano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_state	*create_state(void)
 		return (NULL);
 	state->stack_a = create_stack();
 	state->stack_b = create_stack();
+	state->operations = create_stack();
 	state->algorithm = NOT_SET;
 	state->benchmark = create_benchmark();
 	state->disorder = 0;
@@ -45,7 +46,7 @@ void	free_stack(t_stack **stack)
 		return ;
 	free_dlist(&(*stack)->head, &(*stack)->tail);
 	free(*stack);
-	return ;
+	*stack = NULL;
 }
 
 void	free_state(t_state **state)

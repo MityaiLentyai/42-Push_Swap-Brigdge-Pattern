@@ -6,7 +6,7 @@
 /*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:30:31 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/19 14:38:23 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/19 17:56:11 by nsuszano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ typedef enum e_algorithm
 	ADAPTIVE
 }	t_algorithm;
 
+typedef enum e_operations
+{
+	SA, SB, SS, PA, PB, RA, RB, RR, RRA, RRB, RRR
+}	t_operations;
+
 // BENCHMARK - I suggest to use int/bool variable to mark if we have to print
 // benchmark or not.
 // But we can also make struct for it, if it seems more consequent.
@@ -43,11 +48,11 @@ typedef enum e_algorithm
 // but, in case, it will not take much to modify basic
 // list operations to circular one.
 
-typedef struct list
+typedef struct e_dlist
 {
-	int			value;
-	struct list	*next;
-	struct list	*prev;
+	int				value;
+	struct e_dlist	*next;
+	struct e_dlist	*prev;
 }	t_dlist;
 
 // to_print = 1 if we are supposed to print it; 0 otherwise
@@ -83,6 +88,7 @@ typedef struct s_state
 	t_stack		*stack_b;
 	t_algorithm	algorithm;
 	t_benchmark	*benchmark;
+	t_stack		*operations;
 	double		disorder;
 }	t_state;
 
@@ -144,5 +150,15 @@ void		sort_three_complex_a(t_state *state);
 void		sort_three_complex_b(t_state *state);
 void		small_stack_complex_a(t_state *state, int size_of_stack);
 void		small_stack_complex_b(t_state *state, int size_of_stack);
+void		lst_delete_middle_last(t_dlist *to_delete, t_dlist **tail);
+void		put_count_op(t_dlist **operations, t_dlist **tail,t_benchmark *bench);
+void	do_optimalization(t_dlist **operations, t_dlist **tail);
+t_dlist	*find_sb(t_dlist *start);
+t_dlist	*find_sa(t_dlist *start);
+t_dlist	*find_rb(t_dlist *start);
+t_dlist	*find_ra(t_dlist *start);
+t_dlist	*find_rrb(t_dlist *start);
+t_dlist	*find_rra(t_dlist *start);
+
 
 #endif

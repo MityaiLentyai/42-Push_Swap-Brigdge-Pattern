@@ -18,18 +18,11 @@ void	pa(t_state *state, int counter)
 {
 	t_dlist	*tmp;
 
-	if (!state || !state->benchmark || !state->stack_a || !state->stack_b)
-		return ;
-	while (counter > 0)
+	while (counter-- > 0)
 	{
-		tmp = lst_release_front(&state->stack_b->head,
-				&state->stack_b->tail);
-		if (!tmp)
-			return ;
+		tmp = lst_release_front(&state->stack_b->head, &state->stack_b->tail);
 		lst_add_front(tmp, &state->stack_a->head, &state->stack_a->tail);
-		write(1, "pa\n", 3);
-		state->benchmark->pa++;
-		counter--;
+		lst_add_back(create_node(PA), &state->operations->head, &state->operations->tail);
 	}
 }
 
@@ -39,18 +32,12 @@ void	pb(t_state *state, int counter)
 {
 	t_dlist	*tmp;
 
-	if (!state || !state->benchmark || !(state->stack_b))
-		return ;
-	while (counter > 0)
+	while (counter-- > 0)
 	{
 		tmp = lst_release_front(&state->stack_a->head,
 				&state->stack_a->tail);
-		if (!tmp)
-			return ;
 		lst_add_front(tmp, &state->stack_b->head, &state->stack_b->tail);
-		write(1, "pb\n", 3);
-		state->benchmark->pb++;
-		counter--;
+		lst_add_back(create_node(PB), &state->operations->head, &state->operations->tail);
 	}
 }
 // Rotate A: Shift up all elements of stack a by one.
@@ -59,18 +46,12 @@ void	ra(t_state *state, int counter)
 {
 	t_dlist	*tmp;
 
-	if (!state || !state->benchmark || !(state->stack_a))
-		return ;
-	while (counter > 0)
+	while (counter-- > 0)
 	{
 		tmp = lst_release_front(&state->stack_a->head,
 				&state->stack_a->tail);
-		if (!tmp)
-			return ;
 		lst_add_back(tmp, &state->stack_a->head, &state->stack_a->tail);
-		write(1, "ra\n", 3);
-		state->benchmark->ra++;
-		counter--;
+		lst_add_back(create_node(RA), &state->operations->head, &state->operations->tail);
 	}
 }
 
@@ -80,16 +61,10 @@ void	rra(t_state *state, int counter)
 {
 	t_dlist	*tmp;
 
-	if (!state || !state->benchmark || !(state->stack_a))
-		return ;
-	while (counter > 0)
+	while (counter-- > 0)
 	{
 		tmp = lst_release_back(&state->stack_a->head, &state->stack_a->tail);
-		if (!tmp)
-			return ;
 		lst_add_front(tmp, &state->stack_a->head, &state->stack_a->tail);
-		write(1, "rra\n", 4);
-		state->benchmark->rra++;
-		counter--;
+		lst_add_back(create_node(RRA), &state->operations->head, &state->operations->tail);
 	}
 }
