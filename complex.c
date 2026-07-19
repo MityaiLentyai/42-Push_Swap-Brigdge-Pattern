@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   complex.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 17:29:27 by username          #+#    #+#             */
-/*   Updated: 2026/07/19 14:38:46 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/19 21:20:50 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,7 @@ void	complex(t_state *state)
 	size_t	size_of_stack;
 
 	size_of_stack = list_size(state->stack_a->head);
-	if (size_of_stack <= 3)
+	if (size_of_stack <= 5)
 	{
 		small_stack(state);
 		return ;

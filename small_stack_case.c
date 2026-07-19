@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 03:25:52 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/19 15:17:25 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/19 21:01:29 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static void	sort_three(t_state *state, t_dlist *head)
 {
+	if (check_if_sorted(state->stack_a->head))
+		return ;
 	if (head->value > head->next->value
 		&& head->next->value < head->next->next->value
 		&& head->value < head->next->next->value)

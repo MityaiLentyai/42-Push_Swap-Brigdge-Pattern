@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 03:26:58 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/19 01:01:15 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/19 20:38:32 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,6 @@ static void	write_algorithm_name(int fd, t_algorithm algo, double disorder)
 		else if (disorder >= 0.5)
 			ft_putstr_fd("Adaptive / (O(log n))", fd);
 	}
-	else
-		ft_putstr_fd("UNKNOWN", fd);
 	ft_putstr_fd("\n", fd);
 }
 
