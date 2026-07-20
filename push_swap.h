@@ -6,7 +6,7 @@
 /*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:30:31 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/19 20:20:24 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/20 13:39:08 by nsuszano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,24 +94,23 @@ typedef struct s_state
 
 double		compute_disorder(t_stack *stack);
 int			parse_input(int argc, char **argv, t_state *state);
-size_t		check_algorithm(char **argv, t_state *state);
-size_t		check_duplicates(t_dlist *stack, int input_value);
+int		check_duplicates(t_dlist *stack, int input_value);
 t_state		*create_state(void);
 t_benchmark	*create_benchmark(void);
-
+int	set_algo(t_state *state, t_algorithm algo);
 t_dlist		*create_node(int value);
 void		free_state(t_state **state);
-
+int	parse_flags(char *argv, t_state *state);
 void		free_benchmark(t_benchmark **benchmark);
-
+int	single_number(long long input_value, t_state *state);
 void		simple(t_state *state);
-
+int	parse_numbers(char *argv, t_state *state);
 void		free_dlist(t_dlist **head, t_dlist **tail);
 void		lst_add_back(t_dlist *new, t_dlist **head, t_dlist **tail);
 void		lst_add_front(t_dlist *new, t_dlist **head, t_dlist **tail);
 t_dlist		*lst_release_front(t_dlist **head, t_dlist **tail);
 t_dlist		*lst_release_back(t_dlist **head, t_dlist **tail);
-
+int	error(t_state *state);
 t_dlist		*create_node(int value);
 void		free_state(t_state **state);
 void		free_benchmark(t_benchmark **benchmark);
