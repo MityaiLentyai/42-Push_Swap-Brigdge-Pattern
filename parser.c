@@ -6,7 +6,7 @@
 /*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:25:44 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/20 13:33:17 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/20 14:23:45 by nsuszano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,8 @@ int	parse_input(int argc, char **argv, t_state *state)
 		}
 		i++;
 	}
+	if (numbers_started == 0)
+		return (1);
 	if (state->algorithm == NOT_SET)
 		state->algorithm = ADAPTIVE;
 	return (0);
