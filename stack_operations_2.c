@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_operations_2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:23:40 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/19 19:18:40 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/20 17:02:35 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 void	sa(t_state *state)
 {
 	swap_two_first(&state->stack_a->head, &state->stack_a->tail);
-	lst_add_back(create_node(SA), &state->operations->head, &state->operations->tail);
+	lst_add_back(create_node(SA), &state->operations->head,
+		&state->operations->tail);
 }
 
 // Swap B: - Swap the first two elements at the top of stack b.
@@ -25,7 +26,8 @@ void	sa(t_state *state)
 void	sb(t_state *state)
 {
 	swap_two_first(&state->stack_b->head, &state->stack_b->tail);
-	lst_add_back(create_node(SB), &state->operations->head, &state->operations->tail);
+	lst_add_back(create_node(SB), &state->operations->head,
+		&state->operations->tail);
 }
 
 // Rotate B: Shift up all elements of stack B by one.
@@ -38,7 +40,8 @@ void	rb(t_state *state, int counter)
 	{
 		tmp = lst_release_front(&state->stack_b->head, &state->stack_b->tail);
 		lst_add_back(tmp, &state->stack_b->head, &state->stack_b->tail);
-		lst_add_back(create_node(RB), &state->operations->head, &state->operations->tail);
+		lst_add_back(create_node(RB), &state->operations->head,
+			&state->operations->tail);
 	}
 }
 
@@ -52,6 +55,7 @@ void	rrb(t_state *state, int counter)
 	{
 		tmp = lst_release_back(&state->stack_b->head, &state->stack_b->tail);
 		lst_add_front(tmp, &state->stack_b->head, &state->stack_b->tail);
-		lst_add_back(create_node(RRB), &state->operations->head, &state->operations->tail);
+		lst_add_back(create_node(RRB), &state->operations->head,
+			&state->operations->tail);
 	}
 }

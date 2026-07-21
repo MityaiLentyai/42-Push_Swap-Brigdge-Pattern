@@ -22,7 +22,8 @@ void	pa(t_state *state, int counter)
 	{
 		tmp = lst_release_front(&state->stack_b->head, &state->stack_b->tail);
 		lst_add_front(tmp, &state->stack_a->head, &state->stack_a->tail);
-		lst_add_back(create_node(PA), &state->operations->head, &state->operations->tail);
+		lst_add_back(create_node(PA), &state->operations->head,
+			&state->operations->tail);
 	}
 }
 
@@ -37,7 +38,8 @@ void	pb(t_state *state, int counter)
 		tmp = lst_release_front(&state->stack_a->head,
 				&state->stack_a->tail);
 		lst_add_front(tmp, &state->stack_b->head, &state->stack_b->tail);
-		lst_add_back(create_node(PB), &state->operations->head, &state->operations->tail);
+		lst_add_back(create_node(PB), &state->operations->head,
+			&state->operations->tail);
 	}
 }
 
@@ -52,7 +54,8 @@ void	ra(t_state *state, int counter)
 		tmp = lst_release_front(&state->stack_a->head,
 				&state->stack_a->tail);
 		lst_add_back(tmp, &state->stack_a->head, &state->stack_a->tail);
-		lst_add_back(create_node(RA), &state->operations->head, &state->operations->tail);
+		lst_add_back(create_node(RA), &state->operations->head,
+			&state->operations->tail);
 	}
 }
 
@@ -66,6 +69,7 @@ void	rra(t_state *state, int counter)
 	{
 		tmp = lst_release_back(&state->stack_a->head, &state->stack_a->tail);
 		lst_add_front(tmp, &state->stack_a->head, &state->stack_a->tail);
-		lst_add_back(create_node(RRA), &state->operations->head, &state->operations->tail);
+		lst_add_back(create_node(RRA), &state->operations->head,
+			&state->operations->tail);
 	}
 }

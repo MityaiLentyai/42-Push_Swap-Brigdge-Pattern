@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   medium_2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/03 12:19:27 by nsuszano          #+#    #+#             */
-/*   Updated: 2026/07/20 22:08:55 by dzzayats         ###   ########.fr       */
+/*   Created: 2026/07/20 17:57:04 by dzzayats          #+#    #+#             */
+/*   Updated: 2026/07/20 17:58:10 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-size_t	ft_strlen(const char *str)
+void	sort_int(int *tab, size_t n)
 {
-	int	l;
+	size_t	i;
+	size_t	j;
+	int		tmp;
 
-	l = 0;
-	if (!str)
-		return (0);
-	while (str[l])
-		l++;
-	return (l);
+	i = n - 1;
+	while (i > 0)
+	{
+		j = 0;
+		while (j < i)
+		{
+			if (tab[j] > tab[j + 1])
+			{
+				tmp = tab[j];
+				tab[j] = tab[j + 1];
+				tab[j + 1] = tmp;
+			}
+			j++;
+		}
+		i--;
+	}
 }
-
-// int	main(void)
-// {
-// 	char	c[] = "mam dl 8";
-// 	printf("%ld\n", ft_strlen(c));
-// 	printf("%ld\n", strlen(c));
-// }

@@ -1,40 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   medium.c                                           :+:      :+:    :+:   */
+/*   medium_1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/17 14:32:35 by nsuszano          #+#    #+#             */
-/*   Updated: 2026/07/19 20:20:10 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/20 17:58:03 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	sort_int(int *tab, size_t n)
-{
-	size_t	i;
-	size_t	j;
-	int		tmp;
-
-	i = n - 1;
-	while (i > 0)
-	{
-		j = 0;
-		while (j < i)
-		{
-			if (tab[j] > tab[j + 1])
-			{
-				tmp = tab[j];
-				tab[j] = tab[j + 1];
-				tab[j + 1] = tmp;
-			}
-			j++;
-		}
-		i--;
-	}
-}
 
 void	list_into_array(int *list_copy, t_dlist *head)
 {
@@ -55,9 +31,8 @@ size_t	change_numbers(t_dlist *head)
 	size_t	list_length;
 	int		*list_copy;
 
-	if (!head) // but there is no such possibility that head is empty at this point of program
+	if (!head)
 		return (1);
-	// if so then is would already been stopped
 	list_length = list_size(head);
 	list_copy = malloc(list_length * sizeof(int));
 	if (!list_copy)

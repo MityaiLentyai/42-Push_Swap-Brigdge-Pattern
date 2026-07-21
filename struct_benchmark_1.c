@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 03:26:58 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/19 21:52:18 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/20 18:10:12 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,54 +34,13 @@ t_benchmark	*create_benchmark(void)
 	return (bench);
 }
 
-static void	write_double(int fd, double value)
-{
-	double	percentage;
-	int		integer_part;
-	int		decimal_part;
-
-	percentage = value * 100;
-	integer_part = (int) percentage;
-	decimal_part = (int)((percentage - integer_part) * 100);
-	if (decimal_part < 0)
-		decimal_part = -decimal_part;
-	ft_putstr_fd("[bench] disorder: ", fd);
-	ft_putnbr_fd(integer_part, fd);
-	ft_putstr_fd(".", fd);
-	if (decimal_part < 10)
-		ft_putstr_fd("0", fd);
-	ft_putnbr_fd(decimal_part, fd);
-	ft_putstr_fd("%\n", fd);
-}
-
-static void	write_algorithm_name(int fd, t_algorithm algo, double disorder)
-{
-	ft_putstr_fd("[bench] strategy: ", fd);
-	if (algo == SIMPLE)
-		ft_putstr_fd("Simple / (O(n^2))", fd);
-	else if (algo == MEDIUM)
-		ft_putstr_fd("Medium / (O(n \u221An))", fd);
-	else if (algo == COMPLEX)
-		ft_putstr_fd("Complex / (O(n log n))", fd);
-	else if (algo == ADAPTIVE)
-	{
-		if (disorder < 0.2)
-			ft_putstr_fd("Adaptive / (O(n^2))", fd);
-		else if (disorder >= 0.2 && disorder < 0.5)
-			ft_putstr_fd("Adaptive / (O(n \u221An))", fd);
-		else if (disorder >= 0.5)
-			ft_putstr_fd("Adaptive / (O(n log n))", fd);
-	}
-	ft_putstr_fd("\n", fd);
-}
-
 static void	write_total_operations(int fd, t_benchmark *bench)
 {
 	size_t	total;
 
 	total = bench->sa + bench->sb + bench->ss + bench->pa + bench->pb
-	+bench->ra + bench->rb + bench->rr + bench->rra + bench->rrb
-	+bench->rrr;
+		+bench->ra + bench->rb + bench->rr + bench->rra + bench->rrb
+		+bench->rrr;
 	ft_putstr_fd("[bench] total_ops: ", fd);
 	ft_putnbr_fd(total, fd);
 	ft_putstr_fd("\n", fd);

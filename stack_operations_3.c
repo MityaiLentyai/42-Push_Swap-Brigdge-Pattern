@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_operations_3.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:54:49 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/19 19:18:04 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/20 16:54:07 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	rr(t_state *state, int counter)
 		lst_add_back(tmp, &state->stack_a->head, &state->stack_a->tail);
 		tmp = lst_release_front(&state->stack_b->head, &state->stack_b->tail);
 		lst_add_back(tmp, &state->stack_b->head, &state->stack_b->tail);
-		lst_add_back(create_node(RR), &state->operations->head, &state->operations->tail);
+		lst_add_back(create_node(RR), &state->operations->head,
+			&state->operations->tail);
 	}
 }
 
@@ -32,7 +33,8 @@ void	ss(t_state *state)
 {
 	swap_two_first(&state->stack_a->head, &state->stack_a->tail);
 	swap_two_first(&state->stack_b->head, &state->stack_b->tail);
-	lst_add_back(create_node(SS), &state->operations->head, &state->operations->tail);
+	lst_add_back(create_node(SS), &state->operations->head,
+		&state->operations->tail);
 }
 
 // RRR: rra and rrb at the same time
@@ -46,6 +48,7 @@ void	rrr(t_state *state, int counter)
 		lst_add_front(tmp, &state->stack_a->head, &state->stack_a->tail);
 		tmp = lst_release_back(&state->stack_b->head, &state->stack_b->tail);
 		lst_add_front(tmp, &state->stack_b->head, &state->stack_b->tail);
-		lst_add_back(create_node(RRR), &state->operations->head, &state->operations->tail);
+		lst_add_back(create_node(RRR), &state->operations->head,
+			&state->operations->tail);
 	}
 }

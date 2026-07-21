@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:27:00 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/19 19:12:04 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/20 16:57:12 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	helper_main(t_state *state)
 				complex(state);
 		}
 	}
-	put_count_op(&state->operations->head, &state->operations->tail, state->benchmark);
+	put_count_op(&state->operations->head,
+		&state->operations->tail, state->benchmark);
 	call_benchmark(state);
 	free_state(&state);
 }
