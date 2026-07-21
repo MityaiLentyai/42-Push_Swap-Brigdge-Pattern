@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:30:31 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/18 14:37:14 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/20 20:23:03 by nsuszano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,21 @@ typedef enum e_algorithm
 	ADAPTIVE
 }	t_algorithm;
 
+typedef enum e_operations
+{
+	SA,
+	SB,
+	SS,
+	PA,
+	PB,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR
+}	t_operations;
+
 // BENCHMARK - I suggest to use int/bool variable to mark if we have to print
 // benchmark or not.
 // But we can also make struct for it, if it seems more consequent.
@@ -43,11 +58,11 @@ typedef enum e_algorithm
 // but, in case, it will not take much to modify basic
 // list operations to circular one.
 
-typedef struct list
+typedef struct e_dlist
 {
-	int			value;
-	struct list	*next;
-	struct list	*prev;
+	int				value;
+	struct e_dlist	*next;
+	struct e_dlist	*prev;
 }	t_dlist;
 
 // to_print = 1 if we are supposed to print it; 0 otherwise
@@ -83,30 +98,32 @@ typedef struct s_state
 	t_stack		*stack_b;
 	t_algorithm	algorithm;
 	t_benchmark	*benchmark;
+	t_stack		*operations;
 	double		disorder;
 }	t_state;
 
+void		write_algorithm_name(int fd, t_algorithm algo, double disorder);
 double		compute_disorder(t_stack *stack);
 int			parse_input(int argc, char **argv, t_state *state);
-size_t		check_algorithm(char **argv, t_state *state);
-size_t		check_duplicates(t_dlist *stack, int input_value);
+int			check_duplicates(t_dlist *stack, int input_value);
 t_state		*create_state(void);
 t_benchmark	*create_benchmark(void);
-
+int			set_algo(t_state *state, t_algorithm algo);
 t_dlist		*create_node(int value);
 void		free_state(t_state **state);
-
+int			parse_flags(char *argv, t_state *state);
 void		free_benchmark(t_benchmark **benchmark);
-
+int			single_number(long long input_value, t_state *state);
 void		simple(t_state *state);
-
+int			parse_numbers(char *argv, t_state *state);
 void		free_dlist(t_dlist **head, t_dlist **tail);
 void		lst_add_back(t_dlist *new, t_dlist **head, t_dlist **tail);
 void		lst_add_front(t_dlist *new, t_dlist **head, t_dlist **tail);
 t_dlist		*lst_release_front(t_dlist **head, t_dlist **tail);
 t_dlist		*lst_release_back(t_dlist **head, t_dlist **tail);
-
+int			error(t_state *state);
 t_dlist		*create_node(int value);
+void		write_double(int fd, double value);
 void		free_state(t_state **state);
 void		free_benchmark(t_benchmark **benchmark);
 void		simple(t_state *state);
@@ -115,6 +132,12 @@ size_t		idx_of_min(t_dlist *stack);
 size_t		list_size(t_dlist *head);
 size_t		check_if_swap(t_dlist *head);
 size_t		check_if_sorted(t_dlist *head);
+t_dlist		*find_sb(t_dlist *start);
+t_dlist		*find_sa(t_dlist *start);
+t_dlist		*find_rb(t_dlist *start);
+t_dlist		*find_ra(t_dlist *start);
+t_dlist		*find_rrb(t_dlist *start);
+t_dlist		*find_rra(t_dlist *start);
 
 void		pa(t_state *state, int counter);
 void		pb(t_state *state, int counter);
@@ -137,5 +160,23 @@ void		list_into_array(int *list_copy, t_dlist *head);
 size_t		change_numbers(t_dlist *head);
 int			chunk_size_cal(int n);
 void		medium(t_state *state);
+void		quick_sort_a(t_state *state, int min, int max);
+void		quick_sort_b(t_state *state, int min, int max);
+void		complex(t_state *state);
+void		sort_three_complex_a(t_state *state);
+void		small_stack_complex_a(t_state *state, int size_of_stack);
+void		small_stack_complex_b(t_state *state, int size_of_stack);
+void		lst_delete_middle_last(t_dlist *to_delete, t_dlist **tail);
+void		put_count_op(t_dlist **operations, t_dlist **tail,
+				t_benchmark *bench);
+void		do_optimalization(t_dlist **operations, t_dlist **tail);
+void		from_a_to_b(t_state *state, int min_value, int chunk_size);
+int			quick_sort_a_help(t_state *state, int min, int median);
+int			quick_sort_b_help(t_state *state, int max, int median);
+void		check_ss(t_dlist *curr, t_dlist **tail);
+void		check_rr(t_dlist *curr, t_dlist **tail);
+void		check_rrr(t_dlist *curr, t_dlist **tail);
+void		count_write1(t_dlist *curr, t_benchmark *bench);
+void		count_write2(t_dlist *curr, t_benchmark *bench);
 
 #endif

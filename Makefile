@@ -5,11 +5,12 @@ CFLAGS = -Wall -Wextra -Werror
 DEBUG_FLAGS = -g -O0
 RM = rm -f
 
-SRCS = push_swap.c parser.c struct_state.c struct_benchmark.c \
+SRCS = push_swap.c parser_1.c parser_2.c struct_state.c struct_benchmark_1.c  \
+struct_benchmark_2.c medium_1.c medium_2.c put_count_op_1.c put_count_op_2.c \
 list_operations_1.c list_operations_2.c help_search_func.c simple.c \
-complex.c adaptive.c output.c small_stack_case.c disorder.c \
+complex_1.c complex_2.c adaptive.c small_stack_case.c disorder.c \
 test.c stack_operations_1.c stack_operations_2.c stack_operations_3.c \
-medium.c
+put_count_op_3.c
 
 OBJS = $(SRCS:.c=.o)
 DEBUG_OBJS = $(SRCS:.c=.debug.o)

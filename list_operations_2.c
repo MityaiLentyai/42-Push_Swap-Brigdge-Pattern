@@ -56,3 +56,23 @@ void	swap_two_first(t_dlist **head, t_dlist **tail)
 	first->next->prev = first;
 	*head = second;
 }
+
+void	lst_delete_middle_last(t_dlist *to_delete, t_dlist **tail)
+{
+	if (!to_delete)
+		return ;
+	if (tail && to_delete == *tail)
+	{
+		*tail = to_delete->prev;
+		if (*tail)
+			(*tail)->next = NULL;
+	}
+	else
+	{
+		if (to_delete->prev)
+			to_delete->prev->next = to_delete->next;
+		if (to_delete->next)
+			to_delete->next->prev = to_delete->prev;
+	}
+	free(to_delete);
+}

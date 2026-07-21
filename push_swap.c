@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:27:00 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/18 17:11:04 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/20 16:57:12 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,26 @@
 void	helper_main(t_state *state)
 {
 	state->disorder = compute_disorder(state->stack_a);
-	if (state->disorder == 0)
-		return ;
-	if (state->algorithm == SIMPLE)
-		simple(state);
-	else if (state->algorithm == MEDIUM)
-		medium(state);
-	else if (state->algorithm == COMPLEX)
-		medium(state); //complex
-	else if (state->algorithm == ADAPTIVE)
+	if (state->disorder != 0)
 	{
-		if (state->disorder < 0.2)
+		if (state->algorithm == SIMPLE)
 			simple(state);
-		else if (state->disorder < 0.5)
+		else if (state->algorithm == MEDIUM)
 			medium(state);
-		else
-			medium(state);	//complex
+		else if (state->algorithm == COMPLEX)
+			complex(state);
+		else if (state->algorithm == ADAPTIVE)
+		{
+			if (state->disorder < 0.2)
+				simple(state);
+			else if (state->disorder < 0.5)
+				medium(state);
+			else
+				complex(state);
+		}
 	}
-	medium(state);
+	put_count_op(&state->operations->head,
+		&state->operations->tail, state->benchmark);
 	call_benchmark(state);
 	free_state(&state);
 }

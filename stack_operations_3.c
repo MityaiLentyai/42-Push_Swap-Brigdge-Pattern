@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:54:49 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/18 16:46:14 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/20 16:54:07 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,68 +16,39 @@
 void	rr(t_state *state, int counter)
 {
 	t_dlist	*tmp;
-	int		temp_counter;
 
-	if (!state || !state->benchmark || !state->stack_a || !state->stack_b)
-		return ;
-	temp_counter = counter;
-	while (temp_counter-- > 0)
+	while (counter-- > 0)
 	{
 		tmp = lst_release_front(&state->stack_a->head, &state->stack_a->tail);
-		if (!tmp)
-			return ;
 		lst_add_back(tmp, &state->stack_a->head, &state->stack_a->tail);
-	}
-	temp_counter = counter;
-	while (temp_counter-- > 0)
-	{
 		tmp = lst_release_front(&state->stack_b->head, &state->stack_b->tail);
-		if (!tmp)
-			return ;
 		lst_add_back(tmp, &state->stack_b->head, &state->stack_b->tail);
+		lst_add_back(create_node(RR), &state->operations->head,
+			&state->operations->tail);
 	}
-	state->benchmark->rr++;
-	write(1, "rr\n", 4);
 }
 
 // SS: SA and SB at the same time.
 void	ss(t_state *state)
 {
-	if (!state || !state->benchmark || !state->stack_a || !state->stack_b)
-		return ;
-	if (!state->stack_a->head || !state->stack_a->head->next
-		|| !state->stack_b->head || !state->stack_b->head->next)
-		return ;
 	swap_two_first(&state->stack_a->head, &state->stack_a->tail);
 	swap_two_first(&state->stack_b->head, &state->stack_b->tail);
-	write(1, "ss\n", 3);
-	state->benchmark->ss++;
+	lst_add_back(create_node(SS), &state->operations->head,
+		&state->operations->tail);
 }
 
 // RRR: rra and rrb at the same time
 void	rrr(t_state *state, int counter)
 {
 	t_dlist	*tmp;
-	int		temp_counter;
 
-	if (!state || !state->benchmark || !state->stack_a || !state->stack_b)
-		return ;
-	temp_counter = counter;
-	while (temp_counter-- > 0)
+	while (counter-- > 0)
 	{
 		tmp = lst_release_back(&state->stack_a->head, &state->stack_a->tail);
-		if (!tmp)
-			return ;
 		lst_add_front(tmp, &state->stack_a->head, &state->stack_a->tail);
-	}
-	temp_counter = counter;
-	while (temp_counter-- > 0)
-	{
 		tmp = lst_release_back(&state->stack_b->head, &state->stack_b->tail);
-		if (!tmp)
-			return ;
 		lst_add_front(tmp, &state->stack_b->head, &state->stack_b->tail);
+		lst_add_back(create_node(RRR), &state->operations->head,
+			&state->operations->tail);
 	}
-	write(1, "rrr\n", 4);
-	state->benchmark->rrr++;
 }

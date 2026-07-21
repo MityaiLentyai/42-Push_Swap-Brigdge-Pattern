@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 03:25:52 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/19 15:10:31 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/20 16:51:57 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 static void	sort_three(t_state *state, t_dlist *head)
 {
-	if (head->value > head->next->value
-		&& head->next->value < head->next->next->value
-		&& head->value < head->next->next->value)
+	if (check_if_sorted(state->stack_a->head))
+		return ;
+	if (head->value > head->next->value && head->next->value
+		< head->next->next->value && head->value < head->next->next->value)
 		sa(state);
 	else if (head->value > head->next->value
 		&& head->next->value < head->next->next->value
@@ -68,13 +69,10 @@ static void	sort_five(t_state *state)
 		pa(state, 1);
 }
 
-
 static void	check_small_stack(t_state *state, t_dlist *head)
 {
 	size_t const	size_of_stack_a = list_size(head);
 
-	if (!head || !head->next || !head->next->next)
-		return ;
 	if (size_of_stack_a == 3)
 		sort_three(state, head);
 	if (size_of_stack_a > 3 && size_of_stack_a <= 5)

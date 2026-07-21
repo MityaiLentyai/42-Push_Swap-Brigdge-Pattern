@@ -12,64 +12,88 @@
 
 #include "push_swap.h"
 
-// Push A: take the first element from the top of B and place it at the top of A
+// PA: take the first element from the top of B and place it at the top of A.
 // Do nothing if B is empty.
+
 void	pa(t_state *state, int counter)
 {
 	t_dlist	*tmp;
 
-	while (counter-- > 0)
+	if (!state || !state->benchmark || !state->stack_a || !state->stack_b)
+		return ;
+	while (counter > 0)
 	{
-		tmp = lst_release_front(&state->stack_b->head, &state->stack_b->tail);
+		tmp = lst_release_front(&state->stack_b->head,
+				&state->stack_b->tail);
+		if (!tmp)
+			return ;
 		lst_add_front(tmp, &state->stack_a->head, &state->stack_a->tail);
-		lst_add_back(create_node(PA), &state->operations->head,
-			&state->operations->tail);
+		write(1, "PA\n", 3);
+		state->benchmark->pa++;
+		counter--;
 	}
 }
 
-// Push B: Take the first element at the top of A and put it ast the top of B.
+// PB Take the first element at the top of A and put it ast the top of B.
 // Do nothing if A is empty.
+
 void	pb(t_state *state, int counter)
 {
 	t_dlist	*tmp;
 
-	while (counter-- > 0)
+	if (!state || !state->benchmark || !(state->stack_b))
+		return ;
+	while (counter > 0)
 	{
 		tmp = lst_release_front(&state->stack_a->head,
 				&state->stack_a->tail);
+		if (!tmp)
+			return ;
 		lst_add_front(tmp, &state->stack_b->head, &state->stack_b->tail);
-		lst_add_back(create_node(PB), &state->operations->head,
-			&state->operations->tail);
+		write(1, "PB\n", 3);
+		state->benchmark->pb++;
+		counter--;
 	}
 }
-
-// Rotate A: Shift up all elements of stack a by one.
+// RA (rotate a): Shift up all elements of stack a by one.
 // The first element becomes the last one.
+
 void	ra(t_state *state, int counter)
 {
 	t_dlist	*tmp;
 
-	while (counter-- > 0)
+	if (!state || !state->benchmark || !(state->stack_a))
+		return ;
+	while (counter > 0)
 	{
 		tmp = lst_release_front(&state->stack_a->head,
 				&state->stack_a->tail);
+		if (!tmp)
+			return ;
 		lst_add_back(tmp, &state->stack_a->head, &state->stack_a->tail);
-		lst_add_back(create_node(RA), &state->operations->head,
-			&state->operations->tail);
+		write(1, "RA\n", 3);
+		state->benchmark->ra++;
+		counter--;
 	}
 }
 
-// Reverse Rotate A: Shift down all elements of stack A by one.
+// RRA (reverse rotate A): Shift down all elements of stack A by one.
 // The last element becomes the first one.
+
 void	rra(t_state *state, int counter)
 {
 	t_dlist	*tmp;
 
-	while (counter-- > 0)
+	if (!state || !state->benchmark || !(state->stack_a))
+		return ;
+	while (counter > 0)
 	{
 		tmp = lst_release_back(&state->stack_a->head, &state->stack_a->tail);
+		if (!tmp)
+			return ;
 		lst_add_front(tmp, &state->stack_a->head, &state->stack_a->tail);
-		lst_add_back(create_node(RRA), &state->operations->head,
-			&state->operations->tail);
+		write(1, "RRA\n", 4);
+		state->benchmark->rra++;
+		counter--;
 	}
 }
