@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   medium.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/17 14:32:35 by nsuszano          #+#    #+#             */
-/*   Updated: 2026/07/19 11:56:37 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/19 20:20:10 by nsuszano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,24 +85,9 @@ int	chunk_size_cal(int n)
 		sqrt++;
 	return (sqrt);
 }
-// same as above - no chance that state is NULL
 
-void	medium(t_state *state)
+void	from_a_to_b(t_state *state, int min_value, int chunk_size)
 {
-	int		chunk_size;
-	int		min_value;
-	size_t	max_idx;
-
-	// numbers changed --> from 0 to size - 1; like indexes in array
-	size_t	size_of_stack;
-
-	size_of_stack = list_size(state->stack_a->head);
-	if (size_of_stack <= 5)
-		return (small_stack(state));
-	if (change_numbers(state->stack_a->head))
-		return ;
-	chunk_size = chunk_size_cal(size_of_stack);
-	min_value = 0;
 	while (state->stack_a->head)
 	{
 		if (state->stack_a->head->value <= min_value)
@@ -119,6 +104,23 @@ void	medium(t_state *state)
 		else
 			ra(state, 1);
 	}
+}
+
+void	medium(t_state *state)
+{
+	int		chunk_size;
+	int		min_value;
+	size_t	max_idx;
+	size_t	size_of_stack;
+
+	size_of_stack = list_size(state->stack_a->head);
+	if (size_of_stack <= 5)
+		return (small_stack(state));
+	if (change_numbers(state->stack_a->head))
+		return ;
+	chunk_size = chunk_size_cal(size_of_stack);
+	min_value = 0;
+	from_a_to_b(state, min_value, chunk_size);
 	size_of_stack = list_size(state->stack_b->head);
 	while (size_of_stack > 0)
 	{

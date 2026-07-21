@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:30:31 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/20 20:23:03 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/21 13:27:47 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
