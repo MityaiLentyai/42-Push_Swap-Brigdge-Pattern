@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:30:31 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/20 20:23:03 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/21 15:21:09 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,6 @@
 # include <limits.h>
 # include "libft/libft.h"
 
-// Enum to mark the algorithm type we are supposed to use.
-// We can use either enum or normal struck with int
-// variable to mark the algorithm type.
-// But enum seems more appropriate, since it keep
-// one current value - easy to check if
-// the algorithm type is already set
 typedef enum e_algorithm
 {
 	NOT_SET,
@@ -49,15 +43,6 @@ typedef enum e_operations
 	RRR
 }	t_operations;
 
-// BENCHMARK - I suggest to use int/bool variable to mark if we have to print
-// benchmark or not.
-// But we can also make struct for it, if it seems more consequent.
-// IDK what is "better programming practice" - LMK, what you think about it.
-
-// For now, i am starting to implement null-eneded double linked list,
-// but, in case, it will not take much to modify basic
-// list operations to circular one.
-
 typedef struct e_dlist
 {
 	int				value;
@@ -65,8 +50,6 @@ typedef struct e_dlist
 	struct e_dlist	*prev;
 }	t_dlist;
 
-// to_print = 1 if we are supposed to print it; 0 otherwise
-// the rest is to follow how many of each operation we have already used
 typedef struct s_benchmark
 {
 	size_t	to_print;
@@ -82,9 +65,6 @@ typedef struct s_benchmark
 	size_t	rrb;
 	size_t	rrr;
 }	t_benchmark;
-
-// I suppose it will be easier if we use struct with current state of stacks etc
-// this way we can pass it as one argument to functions; sth like belowe
 
 typedef struct s_stack
 {

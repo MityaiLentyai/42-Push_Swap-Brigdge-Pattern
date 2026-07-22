@@ -1,8 +1,7 @@
 NAME = push_swap
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
-DEBUG_FLAGS = -g -O0
+CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -f
 
 SRCS = push_swap.c parser_1.c parser_2.c struct_state.c struct_benchmark_1.c  \
@@ -13,8 +12,8 @@ stack_operations_1.c stack_operations_2.c stack_operations_3.c \
 put_count_op_3.c
 
 OBJS = $(SRCS:.c=.o)
-DEBUG_OBJS = $(SRCS:.c=.debug.o)
-BONUS_SRCS = $(filter-out push_swap.c,$(SRCS)) checker.c get_next_line.c
+BONUS_SRCS = $(filter-out push_swap.c,$(SRCS)) checker_bonus.c \
+get_next_line_bonus.c 
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 LIBFT = libft/libft.a
 BONUS = checker
@@ -23,14 +22,6 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
-
-debug: $(NAME)_debug
-
-$(NAME)_debug: $(DEBUG_OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(DEBUG_OBJS) $(LIBFT) -o $(NAME)_debug
-
-%.debug.o: %.c
-	$(CC) $(CFLAGS) $(DEBUG_FLAGS) -c $< -o $@
 
 $(LIBFT):
 	@ $(MAKE) -C libft

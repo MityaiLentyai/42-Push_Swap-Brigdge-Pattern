@@ -6,7 +6,7 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 11:33:35 by nsuszano          #+#    #+#             */
-/*   Updated: 2026/07/19 00:44:29 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/21 18:12:20 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 long long	ft_atoi(const char *nptr)
 {
-	int	minus;
-	int	number;
+	int			minus;
+	long long	number;
 
 	minus = 0;
 	number = 0;
@@ -29,13 +29,14 @@ long long	ft_atoi(const char *nptr)
 	}
 	while (*nptr >= '0' && *nptr <= '9')
 	{
-		number = 10 * number - *nptr + '0';
+		number = 10 * number + *nptr - '0';
 		nptr++;
 	}
-	if (*nptr != '\0')
-		return (LONG_MAX);
-	if (!minus)
+	if (minus)
 		number = -number;
+	if (*nptr != '\0' || number > INT_MAX || number < INT_MIN
+		|| (minus && !number))
+		return (LONG_MAX);
 	return (number);
 }
 

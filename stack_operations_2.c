@@ -6,13 +6,13 @@
 /*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:23:40 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/20 17:02:35 by dzzayats         ###   ########.fr       */
+/*   Updated: 2026/07/21 15:27:29 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Sswap A: Swap the first two elements at the top of stack A.
+// Swap A: Swap the first two elements at the top of stack A.
 // Do nothing if there is only one or no elements.
 void	sa(t_state *state)
 {

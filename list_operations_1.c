@@ -3,26 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   list_operations_1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:22:23 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/19 18:08:21 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/21 15:29:36 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// As we discussed - double ended linked list is the best data structure for
-//this project probably.
-// I wonder if it is better to use null-ended list or a circular one
-//(as far as I know, Mateusz uses circular one, since it is easier to rotate it;
-// on the other hand,
-// with null-ended lists do not require much as well -
-// some add front/back functions and some remove front/back functions,
-//so it is not that hard to implement them).
-
-// I would go with null-ended list, as it is easier to implement,
-// understand and not mess up pointers.
 
 t_dlist	*create_node(int value)
 {
@@ -91,8 +79,6 @@ t_dlist	*lst_release_front(t_dlist **head, t_dlist **tail)
 	return (temp);
 }
 
-// release_back neeeded - same as above but for back
-
 t_dlist	*lst_release_back(t_dlist **head, t_dlist **tail)
 {
 	t_dlist	*temp;
@@ -111,4 +97,3 @@ t_dlist	*lst_release_back(t_dlist **head, t_dlist **tail)
 	(*tail)->next = NULL;
 	return (temp);
 }
-// swap_firsts needed - swaps 2 first elements in stacks.

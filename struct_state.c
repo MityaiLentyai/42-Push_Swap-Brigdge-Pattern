@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_state.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 03:27:32 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/19 19:22:31 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/21 16:32:41 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	free_state(t_state **state)
 		return ;
 	free_stack(&(*state)->stack_a);
 	free_stack(&(*state)->stack_b);
+	free_stack(&(*state)->operations);
 	free_benchmark(&(*state)->benchmark);
 	free(*state);
 	*state = NULL;

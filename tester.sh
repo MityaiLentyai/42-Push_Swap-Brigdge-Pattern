@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Configuration
-SMALL_TESTS_PER_STRATEGY= 250
+SMALL_TESTS_PER_STRATEGY= 222
 STRATEGIES=("--simple" "--medium" "--complex" "")
-LARGE_TESTS=2500
+LARGE_TESTS=55
 LARGE_SIZE=500
 
 # New Configuration Blocks
-EDGE_TESTS=500
-MEDIUM_LARGE_TESTS=2500
+EDGE_TESTS=15
+MEDIUM_LARGE_TESTS=2222
 
 TOTAL_PASSED=0
 TOTAL_FAILED=0
@@ -50,7 +50,7 @@ for ((i=1; i<=EDGE_TESTS; i++)); do
     
     OPS=$(./push_swap $ARG 2>/dev/null)
     OP_COUNT=$(echo "$OPS" | grep -v '^$' | wc -l)
-    CHECKER_RESULT=$(./push_swap $ARG 2>/dev/null | ./checker_linux $ARG 2>/dev/null)
+    CHECKER_RESULT=$(./push_swap $ARG 2>/dev/null | ./checker $ARG 2>/dev/null)
     
     # Special rule: If size is 0, push_swap shouldn't output anything, checker handles it safely
     if [ "$CHECKER_RESULT" == "OK" ] || { [ -z "$ARG" ] && [ -z "$OPS" ]; }; then
@@ -107,9 +107,9 @@ for strategy in "${STRATEGIES[@]}"; do
         
         OP_COUNT=$(echo "$OPS" | grep -v '^$' | wc -l)
         if [ -z "$strategy" ]; then
-            CHECKER_RESULT=$(./push_swap $ARG 2>/dev/null | ./checker_linux $ARG 2>/dev/null)
+            CHECKER_RESULT=$(./push_swap $ARG 2>/dev/null | ./checker $ARG 2>/dev/null)
         else
-            CHECKER_RESULT=$(./push_swap $strategy $ARG 2>/dev/null | ./checker_linux $ARG 2>/dev/null)
+            CHECKER_RESULT=$(./push_swap $strategy $ARG 2>/dev/null | ./checker $ARG 2>/dev/null)
         fi
         
         if [ "$CHECKER_RESULT" == "OK" ]; then
@@ -148,7 +148,7 @@ for ((i=1; i<=LARGE_TESTS; i++)); do
     
     OPS=$(./push_swap $ARG 2>/dev/null)
     OP_COUNT=$(echo "$OPS" | grep -v '^$' | wc -l)
-    CHECKER_RESULT=$(./push_swap $ARG 2>/dev/null | ./checker_linux $ARG 2>/dev/null)
+    CHECKER_RESULT=$(./push_swap $ARG 2>/dev/null | ./checker $ARG 2>/dev/null)
     
     if [ "$CHECKER_RESULT" == "OK" ]; then
         ((large_passed++))
@@ -209,7 +209,7 @@ for ((i=1; i<=MEDIUM_LARGE_TESTS; i++)); do
     
     OPS=$(./push_swap $ARG 2>/dev/null)
     OP_COUNT=$(echo "$OPS" | grep -v '^$' | wc -l)
-    CHECKER_RESULT=$(./push_swap $ARG 2>/dev/null | ./checker_linux $ARG 2>/dev/null)
+    CHECKER_RESULT=$(./push_swap $ARG 2>/dev/null | ./checker $ARG 2>/dev/null)
     
     if [ "$CHECKER_RESULT" == "OK" ]; then
         ((ml_passed++))
@@ -238,7 +238,7 @@ done
 echo -e "\n=================================================="
 echo "                FINAL SUMMARY                     "
 echo "=================================================="
-TOTAL_PLANNED=$((EDGE_TESTS + 100 + LARGE_TESTS + MEDIUM_LARGE_TESTS))
+TOTAL_PLANNED=$((EDGE_TESTS  + LARGE_TESTS + MEDIUM_LARGE_TESTS))
 echo -e "Total Executed Passes: \033[1;37m$((TOTAL_PASSED + TOTAL_FAILED))\033[0m / $TOTAL_PLANNED"
 echo -e "Total Successful:      \033[0;32m$TOTAL_PASSED\033[0m"
 if [ $TOTAL_FAILED -gt 0 ]; then

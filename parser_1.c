@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsuszano <nsuszano@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: dzzayats <dzzayats@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 02:25:44 by dzzayats          #+#    #+#             */
-/*   Updated: 2026/07/21 13:55:01 by nsuszano         ###   ########.fr       */
+/*   Updated: 2026/07/21 18:06:30 by dzzayats         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,11 @@ int	parse_numbers(char *argv, t_state *state)
 	long long	input_value;
 
 	arguments = ft_split(argv, ' ');
-	if (!arguments)
-		return (1);
+	if (!arguments || !*arguments)
+	{
+		free_split(arguments);
+		return (0);
+	}
 	current = arguments;
 	while (*current)
 	{
